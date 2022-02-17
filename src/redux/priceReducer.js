@@ -12,6 +12,7 @@ export const priceReducer = (state = initialState, action) => {
         ...state,
         currency: action.data,
       };
+
     default:
       return state;
   }

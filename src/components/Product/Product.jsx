@@ -12,17 +12,24 @@ class Product extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.currency !== this.props.currency) {
+      const value = selectCurrensy(this.props.info.prices, this.props.currency);
       this.setState({
-        curr: selectCurrensy(this.props.info.prices, this.props.currency),
+        curr: value,
       });
     }
   }
 
   render() {
     const { id, name, brand, gallery, inStock } = this.props.info;
+    const { curr } = this.state;
 
     return (
-      <Link to={`/category/${id}`}>
+      <Link
+        to={{
+          pathname: `/category/${id}`,
+          propsSearch: { currency: curr.curr, symbol: curr.symb },
+        }}
+      >
         <div
           className={`${"container_product"} ${
             !inStock && "out_stock_overlay"
@@ -42,7 +49,7 @@ class Product extends Component {
             {brand} {name}
           </h3>
           <p className="price">
-            {this.state.curr.symb} {this.state.curr.curr}
+            {curr.symb} {curr.curr}
           </p>
         </div>
       </Link>

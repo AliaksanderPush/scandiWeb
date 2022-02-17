@@ -52,6 +52,7 @@ export const getProdDetails = (id) => {
         brand
         name
         gallery
+        description
         prices {
           currency{
           label

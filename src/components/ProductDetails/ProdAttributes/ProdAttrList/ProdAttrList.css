@@ -1,0 +1,7 @@
+.sizes_details {
+  width: 304px;
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}

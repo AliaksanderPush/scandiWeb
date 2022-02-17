@@ -13,13 +13,7 @@ class App extends Component {
           <Switch>
             <Route path="/:category/" exact component={Category} />
             <Route path="/cart/" component={Cart} />
-            <Route
-              path="/category/:id"
-              render={({ match }) => {
-                const { id } = match.params;
-                return <ProductDetails ProdId={id} />;
-              }}
-            />
+            <Route path="/category/:id" component={ProductDetails} />
             <Route />
           </Switch>
         </Layout>

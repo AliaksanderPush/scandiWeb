@@ -1,0 +1,15 @@
+.sizes_details .size {
+  width: 63px;
+  height: 45px;
+  font-size: 16px;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 45px;
+  margin: 0px 12px 12px 0px;
+  cursor: pointer;
+}
+
+.sizes_details .size.black {
+  background-color: black;
+  color: #fff;
+}

@@ -23,26 +23,24 @@ class Header extends Component {
     return (
       <div className="outer_header">
         <div className="inner_header">
-          <div>
-            <div className="cat_selectors">
-              <ul className="cat_menu">
-                <Query query={MENU_CATEGORIES}>
-                  {({ loading, data, error }) => {
-                    if (loading) return <Spinner />;
-                    if (error) return <ErrorBoundry />;
-                    return data?.categories.map((cat) => {
-                      return (
-                        <li key={cat.name}>
-                          <NavLink to={`/${cat.name}`}>
-                            {cat.name.toUpperCase()}
-                          </NavLink>
-                        </li>
-                      );
-                    });
-                  }}
-                </Query>
-              </ul>
-            </div>
+          <div className="cat_selectors">
+            <ul className="cat_menu">
+              <Query query={MENU_CATEGORIES}>
+                {({ loading, data, error }) => {
+                  if (loading) return <Spinner />;
+                  if (error) return <ErrorBoundry />;
+                  return data?.categories.map((cat) => {
+                    return (
+                      <li key={cat.name}>
+                        <NavLink className="nav_linck" to={`/${cat.name}`}>
+                          {cat.name.toUpperCase()}
+                        </NavLink>
+                      </li>
+                    );
+                  });
+                }}
+              </Query>
+            </ul>
           </div>
           <div className="logo_box">
             <div className="logo">
