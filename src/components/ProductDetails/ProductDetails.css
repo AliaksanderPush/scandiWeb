@@ -85,7 +85,7 @@
 .price h2 {
   font-size: 24px;
 }
-.price button {
+.add_to_cart_btn {
   font-weight: 600;
   font-size: 16px;
   text-transform: uppercase;
@@ -96,6 +96,19 @@
   margin-top: 20px;
   border: none;
 }
+.add_to_cart_btn.disabled {
+  background: grey;
+}
+
+.add_to_cart_btn.disabled:hover {
+  background-color: grey;
+  transition: 0.3s;
+}
+
+.add_to_cart_btn:hover {
+  background-color: #1bb343;
+  transition: 0.3s;
+}
 
 .text_details {
   width: 292px;
@@ -105,6 +118,10 @@
   margin-top: 40px;
   padding-bottom: 20px;
   line-height: 160%;
+}
+.show_message {
+  text-align: center;
+  color: red;
 }
 
 @media only screen and (max-width: 1547px) {

@@ -64,6 +64,7 @@ class ProductDetails extends Component {
                     name={data?.product?.name}
                     attributes={data?.product?.attributes}
                     description={data?.product?.description}
+                    inStock={data?.product?.inStock}
                   />
                 </div>
               </div>

@@ -51,6 +51,7 @@ export const getProdDetails = (id) => {
       product (id:"${id}") {
         brand
         name
+        inStock
         gallery
         description
         prices {
