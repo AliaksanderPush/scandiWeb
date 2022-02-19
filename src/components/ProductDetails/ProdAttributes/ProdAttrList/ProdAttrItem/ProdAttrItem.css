@@ -9,7 +9,10 @@
   cursor: pointer;
 }
 
-.sizes_details .size.black {
+.size.black {
   background-color: black;
   color: #fff;
+}
+.size.border {
+  border: 3px solid red;
 }

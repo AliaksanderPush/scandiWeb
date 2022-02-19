@@ -1,2 +1,2 @@
-import { ProdAttrList } from "./ProdAttrList";
+import ProdAttrList from "./ProdAttrList";
 export default ProdAttrList;

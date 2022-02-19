@@ -24,7 +24,6 @@ class Category extends Component {
             {({ loading, data, error }) => {
               if (loading) return <Spinner />;
               if (!!error) return <ErrorBoundry />;
-              console.log("query>>", data.category.products);
               return data?.category?.products.map((prod) => {
                 return <Product key={prod.id} info={prod} />;
               });
