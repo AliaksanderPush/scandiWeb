@@ -41,7 +41,7 @@
 .brand_and_name {
   font-weight: 300;
   font-size: 18px;
-  color: #1d1f22;
+  color: var(--black);
   margin-top: 1rem;
   margin-bottom: 0;
   text-overflow: ellipsis;
@@ -52,7 +52,7 @@
 .price {
   font-weight: bold;
   font-size: 1rem;
-  color: #1d1f22;
+  color: var(--black);
   margin-top: 3px;
   margin-bottom: 0;
 }
@@ -65,7 +65,7 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background-color: #5ece7b;
+  background-color: var(--green);
   display: flex;
   justify-content: center;
   align-items: center;

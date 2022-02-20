@@ -15,3 +15,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.error {
+  color: var(--red);
+}
+
+:root {
+  --green: #5ece7b;
+  --black: #1d1f22;
+  --white: #fff;
+  --darckGreen: #1bb343;
+  --gray: gray;
+  --red: red;
+}

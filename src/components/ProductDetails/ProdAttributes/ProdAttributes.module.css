@@ -1,0 +1,53 @@
+.info_details {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+}
+.wrap_info_details {
+  font-family: "Raleway", sans-serif;
+}
+
+.wrap_info_details h1 {
+  font-weight: 600;
+  font-size: 30px;
+}
+.wrap_info_details h2 {
+  font-weight: 400;
+  font-size: 30px;
+  margin-top: 16px;
+  margin-bottom: 43px;
+}
+.wrap_info_details h3 {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 8px;
+  margin-top: 12px;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+}
+
+.price {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+}
+.price h3 {
+  font-size: 18px;
+}
+.price h2 {
+  font-size: 24px;
+}
+
+.text_details {
+  width: 292px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 40px;
+  padding-bottom: 20px;
+  line-height: 160%;
+}
+.show_message {
+  text-align: center;
+  color: red;
+}

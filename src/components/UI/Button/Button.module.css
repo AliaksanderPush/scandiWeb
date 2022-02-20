@@ -1,0 +1,48 @@
+.button {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.xl {
+  font-size: 16px;
+  width: 292px;
+  height: 52px;
+  margin-top: 20px;
+  padding: 20px;
+}
+.l {
+  width: 140px;
+  height: 43px;
+  font-size: 14px;
+}
+
+.primary {
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  font-size: 14px;
+}
+.primary:hover {
+  background-color: var(--darckGreen);
+  transition: all 0.3s;
+}
+
+.ghost {
+  background-color: var(--white);
+  color: var(--black);
+  border: 1px solid var(--black);
+}
+.ghost:hover {
+  background-color: var(--black);
+  color: var(--white);
+  transition: all 0.3s;
+}
+
+.disabled {
+  background: var(--gray);
+}
+.disabled:hover {
+  background-color: var(--gray);
+  transition: all 0.3s;
+}

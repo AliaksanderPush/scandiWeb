@@ -1,0 +1,64 @@
+.cart_modal_wrap {
+  width: 100%;
+  height: 140px;
+  display: flex;
+}
+
+.modal_attributes {
+  width: 45%;
+}
+.modal_brand > p {
+  font-weight: 300;
+  line-height: 26px;
+  margin-bottom: 9px;
+}
+.modal_price {
+  font-weight: 500;
+  margin-bottom: 27px;
+}
+
+.modal_size {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.modal_size button {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--black);
+  text-align: center;
+  line-height: 24px;
+  margin-right: 8px;
+}
+.modal_name {
+  margin-right: 10px;
+}
+
+.modal_counts {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0px 8px;
+}
+.modal_counts .count {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--black);
+  text-align: center;
+  font-size: 18px;
+}
+.modal_counts > div {
+  text-align: center;
+}
+.modal_image {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal_image img {
+  height: 100%;
+  width: auto;
+}

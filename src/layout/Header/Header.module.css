@@ -4,6 +4,7 @@
   min-width: 380px;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 .inner_header {
   width: 85%;
@@ -45,7 +46,7 @@
 .cat_menu li {
   list-style-type: none;
   display: inline-block;
-  color: rgba(94, 206, 123, 1);
+  color: var(--green);
   font-family: "Raleway", sans-serif;
   font-weight: 400;
   margin-right: 32px;
@@ -54,12 +55,12 @@
 
 .cat_menu li a {
   text-decoration: none;
-  color: #1d1f22;
+  color: var(--black);
 }
 
 .nav_linck.active {
-  color: rgba(94, 206, 123, 1);
-  border-bottom: 2px solid rgba(94, 206, 123, 1);
+  color: var(--green);
+  border-bottom: 2px solid var(--green);
   cursor: pointer;
   padding: 0 0 32px 0;
   font-weight: 600;
@@ -88,7 +89,7 @@
 
   border: none;
   font-family: "Raleway", sans-serif;
-  color: #1d1f22;
+  color: var(--black);
 }
 .arrow_menu select:focus {
   padding: 20px 5px;

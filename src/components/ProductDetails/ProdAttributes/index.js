@@ -1,2 +1,2 @@
-import ProdAtributes from "./ProdAttributes";
-export default ProdAtributes;
+import ProdAttributes from "./ProdAttributes";
+export default ProdAttributes;

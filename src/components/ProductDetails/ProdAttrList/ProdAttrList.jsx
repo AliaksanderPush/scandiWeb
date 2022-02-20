@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import ProdAttrItem from "./ProdAttrItem";
-import "./ProdAttrList.css";
+import ProdAttrItem from "../ProdAttrItem";
+import styles from "./ProdAttrList.module.css";
 
 class ProdAttrList extends Component {
   state = {
@@ -26,9 +26,9 @@ class ProdAttrList extends Component {
 
   onSelectBoxCheck = (item) => {
     if (this.state.selectedOtherBox && this.state.item === item) {
-      return "size black";
+      return "black";
     } else if (this.state.selectedSwatchBox && this.state.item === item) {
-      return "size border";
+      return "border";
     } else {
       return "size";
     }
@@ -36,10 +36,11 @@ class ProdAttrList extends Component {
 
   render() {
     const { items, name, type, handleSelectedAttr } = this.props;
+
     return (
       <>
         <h3>{name}</h3>
-        <div className="sizes_details">
+        <div className={styles.sizes_details}>
           {items.length
             ? items.map((item, index) => {
                 return (

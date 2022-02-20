@@ -18,6 +18,6 @@ export const addToCart = (value) => {
   console.log("achions>>", value);
   return {
     type: ADD_TO_CARD,
-    prod: value,
+    attr: value,
   };
 };

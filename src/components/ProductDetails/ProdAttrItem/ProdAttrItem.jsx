@@ -1,6 +1,5 @@
 import React from "react";
-
-import "./ProdAttrItem.css";
+import { Switch } from "../../";
 
 export const ProdAttrItem = ({
   value,
@@ -18,8 +17,9 @@ export const ProdAttrItem = ({
   }
 
   return (
-    <div
-      className={classes}
+    <Switch
+      appearance={classes}
+      size={"large"}
       style={onColorValue(type, value)}
       onClick={() => {
         onSelectBox();
@@ -27,7 +27,7 @@ export const ProdAttrItem = ({
       }}
     >
       {type === "swatch" ? null : value}
-    </div>
+    </Switch>
   );
 };
 export default ProdAttrItem;

@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { selectCurrensy } from "../../../helpers/helpers";
 import { addToCart } from "../../../redux/actions";
-import ProdAttrList from "./ProdAttrList";
+import ProdAttrList from "../ProdAttrList";
+import { Button } from "../../";
+import styles from "./ProdAttributes.module.css";
 
-class ProdAtributes extends Component {
+class ProdAttributes extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -69,8 +71,8 @@ class ProdAtributes extends Component {
     const { curr, symb } = selectCurrensy(prices, this.props.currency);
     const { inStock, showMessage } = this.state;
     return (
-      <div className="info_details">
-        <div className="wrap_info_details">
+      <div className={styles.info_details}>
+        <div className={styles.wrap_info_details}>
           <h1>{brand}</h1>
           <h2>{name}</h2>
           {attributes.length
@@ -86,25 +88,26 @@ class ProdAtributes extends Component {
               })
             : null}
 
-          <div className="price">
+          <div className={styles.price}>
             <h3>Price:</h3>
             <h2>
               {symb} {curr}
             </h2>
-            <button
-              disabled={!inStock}
+            <Button
+              disable={!inStock}
+              size={"xl"}
+              appearance="primary"
               onClick={this.handleAddToCart}
-              className={
-                !inStock ? "add_to_cart_btn disabled" : "add_to_cart_btn"
-              }
             >
               {!inStock ? "out of stock" : "add to cart"}
-            </button>
+            </Button>
             {showMessage ? (
-              <p className="show_message">Please,choose all attributes</p>
+              <p className={styles.show_message}>
+                Please,choose all attributes
+              </p>
             ) : null}
           </div>
-          <div className="text_details">
+          <div className={styles.text_details}>
             <div dangerouslySetInnerHTML={this.renderMyProps()} />
           </div>
         </div>
@@ -120,4 +123,10 @@ const mapDispatchToProps = (dispatch) => ({
   addAttrToCart: (value) => dispatch(addToCart(value)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProdAtributes);
+export default connect(mapStateToProps, mapDispatchToProps)(ProdAttributes);
+/*
+
+className={
+                !inStock ? "add_to_cart_btn disabled" : "add_to_cart_btn"
+              }
+*/

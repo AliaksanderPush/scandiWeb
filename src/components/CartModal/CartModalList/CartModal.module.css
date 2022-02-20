@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.cart_modal_container {
+  width: 430px;
+  background-color: var(--white);
+  font-size: 16px;
+  font-family: "Raleway", sans-serif;
+  position: absolute;
+  top: 80px;
+  right: 7%;
+  z-index: 100;
+}
+.cart_modal_content {
+  padding: 16px;
+}
+
+.cart_modal_content h1 {
+  font-size: 16px;
+  font-weight: 700;
+  padding-bottom: 23px;
+}
+.cart_modal_content h1 span {
+  font-weight: 500;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  padding: 52px 0px 32px;
+  font-weight: 500;
+}
+.modal_btn {
+  display: flex;
+  justify-content: space-between;
+}

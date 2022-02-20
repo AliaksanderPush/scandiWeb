@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import { Query } from "react-apollo";
-import { Spinner } from "..";
-import ErrorBoundry from "../ErrorBoundry";
-import { getProdDetails } from "../../graphql/querys";
-import { Image } from "../UI/Image";
-import ProdAttributes from "./ProdAttributes/ProdAttributes";
+import { Spinner } from "../..";
+import ErrorBoundry from "../../ErrorBoundry";
+import { getProdDetails } from "../../../graphql/querys";
+import { Image } from "../../UI/Image";
+import ProdAttributes from "../ProdAttributes";
 import { withRouter } from "react-router-dom";
+import styles from "./ProdDetails.module.css";
 
-import "./ProductDetails.css";
-
-class ProductDetails extends Component {
+class ProdDetails extends Component {
   state = {
     mainImage: "",
   };
@@ -29,16 +28,15 @@ class ProductDetails extends Component {
           {({ loading, data, error }) => {
             if (loading) return <Spinner />;
             if (error) return <ErrorBoundry />;
-            console.log("queryDetails>>", data.product);
             return (
-              <div className="container_details">
-                <div className="wrap_details">
-                  <div className="images_details">
-                    <div className="images_items">
+              <div className={styles.container_details}>
+                <div className={styles.wrap_details}>
+                  <div className={styles.images_details}>
+                    <div className={styles.images_items}>
                       {data?.product?.gallery.map((item, index) => {
                         return (
                           <div
-                            className="image_item"
+                            className={styles.image_item}
                             key={item + index}
                             onClick={() => this.handleClick(item)}
                           >
@@ -47,7 +45,7 @@ class ProductDetails extends Component {
                         );
                       })}
                     </div>
-                    <div className="image_main">
+                    <div className={styles.image_main}>
                       <Image
                         src={
                           mainImage.length
@@ -75,4 +73,4 @@ class ProductDetails extends Component {
     );
   }
 }
-export default withRouter(ProductDetails);
+export default withRouter(ProdDetails);

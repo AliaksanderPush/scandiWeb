@@ -7,24 +7,30 @@ import { Spinner } from "../../components";
 import ErrorBoundry from "../../components/ErrorBoundry";
 import { connect } from "react-redux";
 import { currencyLoaded } from "../../redux/actions";
-import "./Header.css";
+import CartModal from "../../components/CartModal/CartModalList";
+import styles from "./Header.module.css";
 
 class Header extends Component {
   state = {
     value: "",
+    showMadalCart: false,
   };
   handleChange = (e) => {
     this.setState({ value: e.target.value });
     this.props.currencyList(e.target.value);
   };
 
+  handleShowModal = () => {
+    this.setState({ showMadalCart: !this.state.showMadalCart });
+  };
+
   render() {
-    const { value } = this.state;
+    const { value, showMadalCart } = this.state;
     return (
-      <div className="outer_header">
-        <div className="inner_header">
-          <div className="cat_selectors">
-            <ul className="cat_menu">
+      <div className={styles.outer_header}>
+        <div className={styles.inner_header}>
+          <div className={styles.cat_selectors}>
+            <ul className={styles.cat_menu}>
               <Query query={MENU_CATEGORIES}>
                 {({ loading, data, error }) => {
                   if (loading) return <Spinner />;
@@ -32,7 +38,10 @@ class Header extends Component {
                   return data?.categories.map((cat) => {
                     return (
                       <li key={cat.name}>
-                        <NavLink className="nav_linck" to={`/${cat.name}`}>
+                        <NavLink
+                          className={styles.nav_linck}
+                          to={`/${cat.name}`}
+                        >
                           {cat.name.toUpperCase()}
                         </NavLink>
                       </li>
@@ -42,14 +51,18 @@ class Header extends Component {
               </Query>
             </ul>
           </div>
-          <div className="logo_box">
-            <div className="logo">
+          <div className={styles.logo_box}>
+            <div className={styles.logo}>
               <Logo />
             </div>
           </div>
-          <div className="cart_menu">
-            <div className="arrow_menu">
-              <select name="select" value={value} onChange={this.handleChange}>
+          <div className={styles.cart_menu}>
+            <div className={styles.arrow_menu}>
+              <select
+                name={styles.select}
+                value={value}
+                onChange={this.handleChange}
+              >
                 <Query query={GET_CURRENCIES}>
                   {({ loading, data, error }) => {
                     if (loading) return "Loading...";
@@ -65,11 +78,12 @@ class Header extends Component {
                 </Query>
               </select>
             </div>
-            <div className="cart">
+            <div className={styles.cart} onClick={this.handleShowModal}>
               <CartIcon />
             </div>
           </div>
         </div>
+        {showMadalCart ? <CartModal /> : null}
       </div>
     );
   }

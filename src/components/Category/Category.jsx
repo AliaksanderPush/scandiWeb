@@ -4,7 +4,7 @@ import { getCategory } from "../../graphql/querys";
 import { Spinner } from "..";
 import ErrorBoundry from "../ErrorBoundry/ErrorBoundry";
 import Product from "../Product";
-import "./Category.css";
+import styles from "./Category.module.css";
 
 class Category extends Component {
   constructor(props) {
@@ -15,11 +15,11 @@ class Category extends Component {
     const category = this.props.history.location.pathname.slice(1);
     const newCategory = category[0].toUpperCase() + category.slice(1);
     return (
-      <div className="container">
-        <div className="title">
+      <div className={styles.container}>
+        <div className={styles.title}>
           <h1>{newCategory}</h1>
         </div>
-        <div className="cards_container">
+        <div className={styles.cards_container}>
           <Query query={getCategory(category)}>
             {({ loading, data, error }) => {
               if (loading) return <Spinner />;
