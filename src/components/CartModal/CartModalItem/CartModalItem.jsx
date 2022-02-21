@@ -4,18 +4,10 @@ import { CartModalSwitch } from "../CartModalSwitchs/CartModalSwitch";
 import styles from "./CartModalItem.module.css";
 
 class CartModalItem extends Component {
-  checkAtributes = (selected, value) => {
-    if (value.attributes === "Size") {
-      const res = value.items.find(
-        (item) => item.value === selected.attributes.value
-      );
-    }
-  };
-
   render() {
-    const { brand, gallery, name, attributes, selectedAttr } = this.props;
-    console.log("props in Item atr>>", attributes);
-    console.log("props in Item>>", selectedAttr);
+    const { brand, gallery, name, attributes, selectedAttr, cartCurrency } =
+      this.props;
+    const { curr, symb } = cartCurrency;
     return (
       <div className={styles.cart_modal_wrap}>
         <div className={styles.modal_attributes}>
@@ -23,26 +15,26 @@ class CartModalItem extends Component {
             <p>{brand}</p>
             <p>{name}</p>
           </div>
-          <div className={styles.modal_price}>$50</div>
+          <div className={styles.modal_price}>
+            {symb}
+            {curr}
+          </div>
           <div className={styles.modal_size}>
             {attributes.length
               ? attributes.map((attr, index) => {
                   return (
                     <div key={attr.name + index} className={styles.modal_name}>
-                     {attr.items.length
+                      {attr.items.length
                         ? attr.items.map((item) => {
                             return (
-                            <div>
-                              <CartModalSwitch
-                                key={item.value + index}
-                                selectedAttr={this.checkAtributes(
-                                  selectedAttr,
-                                  attributes
-                                )}
-                                value={item.value}
-                                type={attr.type}
-                              />
-                            </div>  
+                              <div key={item.value + index}>
+                                <CartModalSwitch
+                                  value={item.value}
+                                  type={attr.type}
+                                  name={attr.name}
+                                  selectedAttr={selectedAttr}
+                                />
+                              </div>
                             );
                           })
                         : null}

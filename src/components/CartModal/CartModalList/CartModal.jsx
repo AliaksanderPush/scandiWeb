@@ -9,20 +9,24 @@ import { Button } from "../..";
 import styles from "./CartModal.module.css";
 
 class CartModal extends Component {
-  constructor(props) {
-    super();
-  }
+  getTotalSumm = () => {
+    const arr = this.props.prodAttr.cart;
+
+    let summ = arr.reduce((acc, it) => acc + it.selCurr.curr, 0);
+    return summ;
+  };
 
   render() {
     const { prodAttr } = this.props;
     const selectedAttr = prodAttr.cart;
-    console.log("prps v cart", prodAttr);
+    console.log(this.getTotalSumm());
     return (
       <div className={styles.cart_modal_container}>
         <div className={styles.cart_modal_content}>
           <h1>
-            My Bag, <span>2 items</span>
+            My Bag, <span>{selectedAttr.length} items</span>{" "}
           </h1>
+
           {selectedAttr.length ? (
             selectedAttr.map((item) => {
               return (
@@ -37,7 +41,8 @@ class CartModal extends Component {
                         brand={data?.product?.brand}
                         gallery={data?.product?.gallery[0]}
                         attributes={data?.product?.attributes}
-                        selectedAttr={selectedAttr}
+                        selectedAttr={item.attributes}
+                        cartCurrency={item.selCurr}
                       />
                     );
                   }}
@@ -49,7 +54,7 @@ class CartModal extends Component {
           )}
           <div className={styles.total}>
             <p>Total</p>
-            <p>50$</p>
+            <p>{this.getTotalSumm()}</p>
           </div>
           <div className={styles.modal_btn}>
             <Button appearance={"ghost"} size={"l"}>

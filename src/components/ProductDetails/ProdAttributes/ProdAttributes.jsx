@@ -7,16 +7,14 @@ import { Button } from "../../";
 import styles from "./ProdAttributes.module.css";
 
 class ProdAttributes extends Component {
-  constructor(props) {
-    super();
-    this.state = {
-      attributes: [],
-      id: "",
-      checkAllSelected: 0,
-      inStock: false,
-      showMessage: false,
-    };
-  }
+  state = {
+    attributes: [],
+    id: "",
+    checkAllSelected: 0,
+    inStock: false,
+    showMessage: false,
+    selectedCurrensy: selectCurrensy(this.props.prices, this.props.currency),
+  };
 
   handleSelectedAttr = (valueAttr, typeAttr, nameAttr) => {
     const attr = this.state.attributes;
@@ -40,9 +38,22 @@ class ProdAttributes extends Component {
     }
   };
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.currency !== this.props.currency) {
+      const value = selectCurrensy(this.props.prices, this.props.currency);
+      this.setState({
+        selectedCurrensy: value,
+      });
+    }
+  }
+
   handleAddToCart = () => {
     if (this.state.checkAllSelected === this.state.attributes.length) {
-      const infoProd = { id: this.state.id, attributes: this.state.attributes };
+      const infoProd = {
+        id: this.state.id,
+        attributes: this.state.attributes,
+        selCurr: this.state.selectedCurrensy,
+      };
       this.props.addAttrToCart(infoProd);
     } else {
       this.setState({ showMessage: true });
@@ -67,8 +78,8 @@ class ProdAttributes extends Component {
   }
 
   render() {
-    const { brand, name, attributes, prices } = this.props;
-    const { curr, symb } = selectCurrensy(prices, this.props.currency);
+    const { brand, name, attributes } = this.props;
+    const { curr, symb } = this.state.selectedCurrensy;
     const { inStock, showMessage } = this.state;
     return (
       <div className={styles.info_details}>
@@ -124,9 +135,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProdAttributes);
-/*
-
-className={
-                !inStock ? "add_to_cart_btn disabled" : "add_to_cart_btn"
-              }
-*/

@@ -1,18 +1,32 @@
 import React from "react";
 import { Switch } from "../..";
 
-export const CartModalSwitch = ({ value, type, selectedAttr }) => {
-  console.log("find", selectedAttr);
-  function onColorValue(type, value) {
+export const CartModalSwitch = ({ value, name, type, selectedAttr }) => {
+  const checkAtributes = () => {
+    const res = selectedAttr.some(
+      (item) => item.value === value && item.name === name
+    );
+    if (res) {
+      if (type === "text" && res) {
+        return "selected";
+      } else {
+        return "border";
+      }
+    } else {
+      return res;
+    }
+  };
+
+  function onColorValue() {
     if (type === "swatch")
       return {
         backgroundColor: value,
       };
   }
-  console.log("type", type);
+
   return (
-    <Switch size={"small"} style={onColorValue(type, value)}>
-      {type === "swatch" ? null : value.slice(0,3)}
+    <Switch size={"small"} appearance={checkAtributes()} style={onColorValue()}>
+      {type === "swatch" ? null : value.slice(0, 3)}
     </Switch>
   );
 };

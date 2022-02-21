@@ -19,7 +19,6 @@ class ProdDetails extends Component {
 
   render() {
     const { mainImage } = this.state;
-    console.log("detailsProps>>", this.props);
     const id = this.props.match.params.id;
 
     return (
