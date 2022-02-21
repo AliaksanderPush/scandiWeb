@@ -12,7 +12,7 @@ export const CartModalSwitch = ({ value, type, selectedAttr }) => {
   console.log("type", type);
   return (
     <Switch size={"small"} style={onColorValue(type, value)}>
-      {type === "swatch" ? null : value}
+      {type === "swatch" ? null : value.slice(0,3)}
     </Switch>
   );
 };

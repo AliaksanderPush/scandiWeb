@@ -29,7 +29,7 @@
 .total {
   display: flex;
   justify-content: space-between;
-  padding: 52px 0px 32px;
+  margin:  52px 0px 32px;
   font-weight: 500;
 }
 .modal_btn {

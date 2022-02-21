@@ -2,6 +2,7 @@
   border: 1px solid var(--black);
   text-align: center;
   cursor: pointer;
+
 }
 .large {
   width: 63px;
@@ -11,10 +12,14 @@
   line-height: 45px;
 }
 .small {
-  width: 24px;
+  min-width: 24px;
   height: 24px;
   line-height: 24px;
-  margin-right: 8px;
+  margin-right: 12px;
+  font-size: 10px;
+  text-align: center;
+  padding: 0;
+
   background-color: var(--gray);
 }
 .selected {

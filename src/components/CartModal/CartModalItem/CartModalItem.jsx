@@ -28,11 +28,11 @@ class CartModalItem extends Component {
             {attributes.length
               ? attributes.map((attr, index) => {
                   return (
-                    <span key={attr.name + index}>
-                      <span className={styles.modal_name}>{attr.name}</span>
-                      {attr.items.length
+                    <div key={attr.name + index} className={styles.modal_name}>
+                     {attr.items.length
                         ? attr.items.map((item) => {
                             return (
+                            <div>
                               <CartModalSwitch
                                 key={item.value + index}
                                 selectedAttr={this.checkAtributes(
@@ -42,10 +42,11 @@ class CartModalItem extends Component {
                                 value={item.value}
                                 type={attr.type}
                               />
+                            </div>  
                             );
                           })
                         : null}
-                    </span>
+                    </div>
                   );
                 })
               : null}
