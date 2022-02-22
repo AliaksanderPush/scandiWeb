@@ -1,11 +1,13 @@
 .info_details {
-  width: 40%;
+  width: 80%;
   height: 100%;
   display: flex;
   justify-content: start;
+  
 }
 .wrap_info_details {
   font-family: "Raleway", sans-serif;
+  
 }
 
 .wrap_info_details h1 {
@@ -51,3 +53,21 @@
   text-align: center;
   color: red;
 }
+@media only screen and (max-width: 800px) {
+  .info_details { 
+    width: 100%;
+    justify-content: center;
+  }
+  .wrap_info_details h1 {
+   text-align: center;
+  }
+  
+  .wrap_info_details > h2 {
+   text-align: center;
+  }
+  .text_details {
+   margin: auto;
+   
+  }
+    
+  } 

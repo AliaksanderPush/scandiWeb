@@ -11,6 +11,7 @@ class CartModalItem extends Component {
     return (
       <div className={styles.cart_modal_wrap}>
         <div className={styles.modal_attributes}>
+          <div className={styles.modal_title}>
           <div className={styles.modal_brand}>
             <p>{brand}</p>
             <p>{name}</p>
@@ -18,6 +19,7 @@ class CartModalItem extends Component {
           <div className={styles.modal_price}>
             {symb}
             {curr}
+          </div>
           </div>
           <div className={styles.modal_size}>
             {attributes.length

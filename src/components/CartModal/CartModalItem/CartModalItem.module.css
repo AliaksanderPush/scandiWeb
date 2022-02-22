@@ -1,12 +1,18 @@
 .cart_modal_wrap {
   width: 100%;
-  height: 200px;
+  height: 207px;
   display: flex;
   margin-bottom: 20px;
+ 
 }
 
 .modal_attributes {
-  width: 45%;
+  width: 145px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 }
 .modal_brand > p {
   font-weight: 300;
@@ -21,15 +27,18 @@
 .modal_size {
   display: flex;
   flex-direction: column;
+  justify-content: end;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+ 
 }
 
-
 .modal_name {
-  margin: 0px 5px 5px 0px;
+  margin: 0px;
+  width: 100%;
   font-size: 14px;
   display: flex;
+  flex-wrap: wrap;
+  
 }
 .modal_name p {
   margin-right: 10px;
@@ -37,11 +46,11 @@
 }
 
 .modal_counts {
-  width: 10%;
+  width: 26px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0px 8px;
+  
 }
 .modal_counts .count {
   width: 24px;
@@ -49,19 +58,23 @@
   border: 1px solid var(--black);
   text-align: center;
   font-size: 18px;
+  margin-right: 0;
+
 }
 .modal_counts > div {
   text-align: center;
+  
 }
 .modal_image {
-  width: 50%;
+  width: 177px;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 5px;
+   overflow: hidden;
+ 
 }
 .modal_image img {
-  height: 100%;
+  height: 70%;
   width: auto;
 }
