@@ -26,6 +26,8 @@ class Header extends Component {
 
   render() {
     const { value, showMadalCart } = this.state;
+    const { prodAttr } = this.props;
+    const selectedAttr = prodAttr.cart;
     return (
       <div className={styles.outer_header}>
         <div className={styles.inner_header}>
@@ -80,6 +82,11 @@ class Header extends Component {
             </div>
             <div className={styles.cart} onClick={this.handleShowModal}>
               <CartIcon />
+              {selectedAttr.length > 0 ? (
+                <div className={styles.product_count}>
+                  {selectedAttr.length}
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
@@ -92,5 +99,8 @@ class Header extends Component {
 const mapDispatchToProps = (dispatch) => ({
   currencyList: (value) => dispatch(currencyLoaded(value)),
 });
+const mapStateToProps = (state) => ({
+  prodAttr: state.cartReducer,
+});
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -53,6 +53,8 @@ class ProdAttributes extends Component {
         id: this.state.id,
         attributes: this.state.attributes,
         selCurr: this.state.selectedCurrensy,
+        count: 1,
+        price: this.state.selectedCurrensy.curr,
       };
       this.props.addAttrToCart(infoProd);
     } else {

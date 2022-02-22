@@ -5,21 +5,32 @@ import styles from "./CartModalItem.module.css";
 
 class CartModalItem extends Component {
   render() {
-    const { brand, gallery, name, attributes, selectedAttr, cartCurrency } =
-      this.props;
+    const {
+      brand,
+      gallery,
+      count,
+      name,
+      attributes,
+      selectedAttr,
+      cartCurrency,
+      id,
+      handleIncrement,
+      handleDecrement,
+    } = this.props;
     const { curr, symb } = cartCurrency;
+    const price = curr.toFixed(2);
     return (
       <div className={styles.cart_modal_wrap}>
         <div className={styles.modal_attributes}>
           <div className={styles.modal_title}>
-          <div className={styles.modal_brand}>
-            <p>{brand}</p>
-            <p>{name}</p>
-          </div>
-          <div className={styles.modal_price}>
-            {symb}
-            {curr}
-          </div>
+            <div className={styles.modal_brand}>
+              <p>{brand}</p>
+              <p>{name}</p>
+            </div>
+            <div className={styles.modal_price}>
+              {symb}
+              {price}
+            </div>
           </div>
           <div className={styles.modal_size}>
             {attributes.length
@@ -47,9 +58,13 @@ class CartModalItem extends Component {
           </div>
         </div>
         <div className={styles.modal_counts}>
-          <div className={styles.count}>+</div>
-          <div>1</div>
-          <div className={styles.count}>-</div>
+          <div className={styles.count} onClick={() => handleIncrement(id)}>
+            +
+          </div>
+          <div>{count}</div>
+          <div className={styles.count} onClick={() => handleDecrement(id)}>
+            -
+          </div>
         </div>
         <div className={styles.modal_image}>
           <Image src={gallery} />

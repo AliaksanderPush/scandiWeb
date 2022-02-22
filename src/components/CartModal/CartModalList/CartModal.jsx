@@ -6,20 +6,26 @@ import { Spinner } from "../..";
 import { Query } from "react-apollo";
 import { getProdDetails } from "../../../graphql/querys";
 import { Button } from "../..";
+import { incrementProd, decrementProd } from "../../../redux/actions";
 import styles from "./CartModal.module.css";
 
 class CartModal extends Component {
   getTotalSumm = () => {
     const arr = this.props.prodAttr.cart;
-
     let summ = arr.reduce((acc, it) => acc + it.selCurr.curr, 0);
-    return summ;
+    return summ.toFixed(2);
+  };
+  handleIncrement = (id) => {
+    this.props.incProd(id);
+  };
+
+  handleDecrement = (id) => {
+    this.props.decProd(id);
   };
 
   render() {
     const { prodAttr } = this.props;
     const selectedAttr = prodAttr.cart;
-    console.log(this.getTotalSumm());
     return (
       <div className={styles.cart_modal_container}>
         <div className={styles.cart_modal_content}>
@@ -43,6 +49,10 @@ class CartModal extends Component {
                         attributes={data?.product?.attributes}
                         selectedAttr={item.attributes}
                         cartCurrency={item.selCurr}
+                        count={item.count}
+                        handleIncrement={this.handleIncrement}
+                        handleDecrement={this.handleDecrement}
+                        id={item.id}
                       />
                     );
                   }}
@@ -73,5 +83,9 @@ class CartModal extends Component {
 const mapStateToProps = (state) => ({
   prodAttr: state.cartReducer,
 });
+const mapDispatchToProps = (dispatch) => ({
+  incProd: (prodId) => dispatch(incrementProd(prodId)),
+  decProd: (prodId) => dispatch(decrementProd(prodId)),
+});
 
-export default connect(mapStateToProps, null)(CartModal);
+export default connect(mapStateToProps, mapDispatchToProps)(CartModal);

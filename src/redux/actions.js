@@ -1,4 +1,10 @@
-import { PRODUCTS_LOAD, CURRENCY_LOAD, ADD_TO_CARD } from "./types";
+import {
+  PRODUCTS_LOAD,
+  CURRENCY_LOAD,
+  ADD_TO_CARD,
+  INCREMENT_PRODUCT,
+  DECREMENT_PRODUCT,
+} from "./types";
 
 export const productLoaded = (newProduct) => {
   return {
@@ -18,5 +24,20 @@ export const addToCart = (value) => {
   return {
     type: ADD_TO_CARD,
     attr: value,
+  };
+};
+
+export const incrementProd = (ProdId) => {
+  console.log("actions>>>", ProdId);
+  return {
+    type: INCREMENT_PRODUCT,
+    id: ProdId,
+  };
+};
+export const decrementProd = (ProdId) => {
+  console.log("actions>>>", ProdId);
+  return {
+    type: DECREMENT_PRODUCT,
+    id: ProdId,
   };
 };

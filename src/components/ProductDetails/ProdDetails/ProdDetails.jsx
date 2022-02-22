@@ -46,6 +46,7 @@ class ProdDetails extends Component {
                     </div>
                     <div className={styles.image_main}>
                       <Image
+                        onClick={this.handleClick}
                         src={
                           mainImage.length
                             ? mainImage
