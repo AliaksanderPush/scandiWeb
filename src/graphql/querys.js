@@ -72,3 +72,22 @@ export const getProdDetails = (id) => {
     }
   `;
 };
+
+export const cartDetails = (id) => {
+  return gql`
+    query {
+      product(id:"${id}") {
+        brand
+        name
+        gallery
+        attributes {
+          name
+          type
+          items {
+            value
+          }
+        }
+      }
+    }
+  `;
+};

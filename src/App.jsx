@@ -3,20 +3,20 @@ import Layout from "./layout/Layout";
 import { Switch, Route } from "react-router-dom";
 import ProdDetails from "./components/ProductDetails/ProdDetails";
 import Category from "./components/Category";
-import Cart from "./components/Cart";
-import {withRouter}  from 'react-router-dom';
+import Cart from "./pages/Cart";
+import { withRouter } from "react-router-dom";
 
 class App extends Component {
   componentDidMount() {
-    this.props.history.push('/all')
+    this.props.history.push("/all");
   }
   render() {
-       return (
+    return (
       <>
         <Layout>
           <Switch>
             <Route path="/:category/" exact component={Category} />
-            <Route path="/cart/" component={Cart} />
+            <Route path="/fan" component={Cart} />
             <Route path="/category/:id" component={ProdDetails} />
             <Route />
           </Switch>

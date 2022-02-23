@@ -8,51 +8,44 @@ import ErrorBoundry from "../../components/ErrorBoundry";
 import { connect } from "react-redux";
 import { currencyLoaded } from "../../redux/actions";
 import CartModal from "../../components/CartModal/CartModalList";
-import Currensy from "../Currency/Currency";
+import { DropCurrMenu } from "../DropCurrMenu/DropCurrMenu";
 import styles from "./Header.module.css";
 
 class Header extends Component {
- constructor(props) {
-   super()
- this.state = {
-    value: "",
+  state = {
+    element: null,
+    elemTitle: null,
     showMadalCart: false,
-  };
-   this.myRef = React.createRef();
- }
-  
-
-
-  handleChange = (e) => {
-    this.setState({ value: e.target.value });
-    this.props.currencyList(e.target.value);
   };
 
   handleShowModal = () => {
     this.setState({ showMadalCart: !this.state.showMadalCart });
   };
-  
-  
-  handleChangeInput =(e) => {
-    console.log(e.target.value)
-    this.setState({ value: e.target.value });
-    /*
-// Close when click to option
-for (let i = 0; i < selectSingle_labels.length; i++) {
-  selectSingle_labels[i].addEventListener('click', (evt) => {
-    selectSingle_title.textContent = evt.target.textContent;
-    console.log(selectSingle_title.textContent)
-    selectSingle.setAttribute('data-state', '');
-  });
-}
-*/
 
+  handleDropMenu = (e) => {
+    const selectSingle = e.target.parentElement;
+    console.log("click", selectSingle);
+    console.log("title", e.target);
+    this.setState({ element: selectSingle, elemTitle: e.target });
+    if ("active" === selectSingle.getAttribute("data-state")) {
+      selectSingle.setAttribute("data-state", "");
+    } else {
+      selectSingle.setAttribute("data-state", "active");
+    }
+  };
 
-  }
-
+  handleLabelValue = (e) => {
+    const selectSingle_label = e.target;
+    let elem = this.state.elemTitle;
+    elem.textContent = selectSingle_label.textContent;
+    this.state.element.setAttribute("data-state", "");
+    const label = elem.textContent.split(" ")[1];
+    this.props.currencyList(label);
+    this.setState({ element: null });
+  };
 
   render() {
-    const { value, showMadalCart } = this.state;
+    const { showMadalCart } = this.state;
     const { prodAttr } = this.props;
     const selectedAttr = prodAttr.cart;
     return (
@@ -87,10 +80,9 @@ for (let i = 0; i < selectSingle_labels.length; i++) {
           </div>
           <div className={styles.cart_menu}>
             <div className={styles.arrow_menu}>
-              <Currensy
-                
-
-
+              <DropCurrMenu
+                handleDropMenu={this.handleDropMenu}
+                handleLabelValue={this.handleLabelValue}
               />
             </div>
             <div className={styles.cart} onClick={this.handleShowModal}>
@@ -103,7 +95,9 @@ for (let i = 0; i < selectSingle_labels.length; i++) {
             </div>
           </div>
         </div>
-        {showMadalCart ? <CartModal /> : null}
+        {showMadalCart ? (
+          <CartModal closeModalCart={this.handleShowModal} />
+        ) : null}
       </div>
     );
   }

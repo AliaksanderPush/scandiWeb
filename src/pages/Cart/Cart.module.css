@@ -1,0 +1,11 @@
+.cart_container {
+  padding: 6rem 6.25rem 3.37rem 6.25rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 2rem;
+  margin-top: 0;
+}

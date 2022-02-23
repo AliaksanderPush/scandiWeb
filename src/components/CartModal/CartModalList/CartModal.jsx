@@ -4,12 +4,16 @@ import { connect } from "react-redux";
 import ErrorBoundry from "../../ErrorBoundry";
 import { Spinner } from "../..";
 import { Query } from "react-apollo";
-import { getProdDetails } from "../../../graphql/querys";
+import { cartDetails } from "../../../graphql/querys";
 import { Button } from "../..";
 import { incrementProd, decrementProd } from "../../../redux/actions";
+import { Link } from "react-router-dom";
 import styles from "./CartModal.module.css";
 
 class CartModal extends Component {
+  constructor(props) {
+    super();
+  }
   getTotalSumm = () => {
     const arr = this.props.prodAttr.cart;
     let summ = arr.reduce((acc, it) => acc + it.selCurr.curr, 0);
@@ -26,6 +30,8 @@ class CartModal extends Component {
   render() {
     const { prodAttr } = this.props;
     const selectedAttr = prodAttr.cart;
+    const summa = this.getTotalSumm();
+
     return (
       <div className={styles.cart_modal_container}>
         <div className={styles.cart_modal_content}>
@@ -36,27 +42,29 @@ class CartModal extends Component {
           {selectedAttr.length ? (
             selectedAttr.map((item) => {
               return (
-                <Query key={item.id} query={getProdDetails(item.id)}>
-                  {({ loading, data, error }) => {
-                    if (loading) return <Spinner />;
-                    if (error) return <ErrorBoundry />;
-                    //console.log("CartDetails>>", data.product);
-                    return (
-                      <CartModalItem
-                        name={data?.product?.name}
-                        brand={data?.product?.brand}
-                        gallery={data?.product?.gallery[0]}
-                        attributes={data?.product?.attributes}
-                        selectedAttr={item.attributes}
-                        cartCurrency={item.selCurr}
-                        count={item.count}
-                        handleIncrement={this.handleIncrement}
-                        handleDecrement={this.handleDecrement}
-                        id={item.id}
-                      />
-                    );
-                  }}
-                </Query>
+                <React.Fragment>
+                  <Query key={item.id} query={cartDetails(item.id)}>
+                    {({ loading, data, error }) => {
+                      if (loading) return <Spinner />;
+                      if (error) return <ErrorBoundry />;
+                      //console.log("CartDetails>>", data.product);
+                      return (
+                        <CartModalItem
+                          name={data?.product?.name}
+                          brand={data?.product?.brand}
+                          gallery={data?.product?.gallery[0]}
+                          attributes={data?.product?.attributes}
+                          selectedAttr={item.attributes}
+                          cartCurrency={item.selCurr}
+                          count={item.count}
+                          handleIncrement={this.handleIncrement}
+                          handleDecrement={this.handleDecrement}
+                          id={item.id}
+                        />
+                      );
+                    }}
+                  </Query>
+                </React.Fragment>
               );
             })
           ) : (
@@ -64,12 +72,18 @@ class CartModal extends Component {
           )}
           <div className={styles.total}>
             <p>Total</p>
-            <p>{this.getTotalSumm()}</p>
+            <p>{summa}</p>
           </div>
           <div className={styles.modal_btn}>
-            <Button appearance={"ghost"} size={"l"}>
-              view bag
-            </Button>
+            <Link to={"/cart"}>
+              <Button
+                appearance={"ghost"}
+                size={"l"}
+                onClick={this.props.closeModalCart}
+              >
+                view bag
+              </Button>
+            </Link>
             <Button appearance={"primary"} size={"l"}>
               check out
             </Button>
