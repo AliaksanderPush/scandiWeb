@@ -4,10 +4,14 @@ import { Switch, Route } from "react-router-dom";
 import ProdDetails from "./components/ProductDetails/ProdDetails";
 import Category from "./components/Category";
 import Cart from "./components/Cart";
+import {withRouter}  from 'react-router-dom';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.history.push('/all')
+  }
   render() {
-    return (
+       return (
       <>
         <Layout>
           <Switch>
@@ -21,4 +25,4 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default withRouter(App);

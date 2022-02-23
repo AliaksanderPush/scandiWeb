@@ -2,19 +2,27 @@ import React, { Component } from "react";
 import { Logo, CartIcon } from "../../components";
 import { NavLink } from "react-router-dom";
 import { Query } from "react-apollo";
-import { MENU_CATEGORIES, GET_CURRENCIES } from "../../graphql/querys";
+import { MENU_CATEGORIES } from "../../graphql/querys";
 import { Spinner } from "../../components";
 import ErrorBoundry from "../../components/ErrorBoundry";
 import { connect } from "react-redux";
 import { currencyLoaded } from "../../redux/actions";
 import CartModal from "../../components/CartModal/CartModalList";
+import Currensy from "../Currency/Currency";
 import styles from "./Header.module.css";
 
 class Header extends Component {
-  state = {
+ constructor(props) {
+   super()
+ this.state = {
     value: "",
     showMadalCart: false,
   };
+   this.myRef = React.createRef();
+ }
+  
+
+
   handleChange = (e) => {
     this.setState({ value: e.target.value });
     this.props.currencyList(e.target.value);
@@ -23,6 +31,25 @@ class Header extends Component {
   handleShowModal = () => {
     this.setState({ showMadalCart: !this.state.showMadalCart });
   };
+  
+  
+  handleChangeInput =(e) => {
+    console.log(e.target.value)
+    this.setState({ value: e.target.value });
+    /*
+// Close when click to option
+for (let i = 0; i < selectSingle_labels.length; i++) {
+  selectSingle_labels[i].addEventListener('click', (evt) => {
+    selectSingle_title.textContent = evt.target.textContent;
+    console.log(selectSingle_title.textContent)
+    selectSingle.setAttribute('data-state', '');
+  });
+}
+*/
+
+
+  }
+
 
   render() {
     const { value, showMadalCart } = this.state;
@@ -60,25 +87,11 @@ class Header extends Component {
           </div>
           <div className={styles.cart_menu}>
             <div className={styles.arrow_menu}>
-              <select
-                name={styles.select}
-                value={value}
-                onChange={this.handleChange}
-              >
-                <Query query={GET_CURRENCIES}>
-                  {({ loading, data, error }) => {
-                    if (loading) return "Loading...";
-                    if (error) return "Error";
-                    return data?.currencies.map((curr) => {
-                      return (
-                        <option key={curr.label} value={curr.label}>
-                          {curr.symbol} {curr.label}
-                        </option>
-                      );
-                    });
-                  }}
-                </Query>
-              </select>
+              <Currensy
+                
+
+
+              />
             </div>
             <div className={styles.cart} onClick={this.handleShowModal}>
               <CartIcon />
