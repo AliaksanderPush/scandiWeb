@@ -1,0 +1,7 @@
+.error {
+	color: var(--red);
+	font-size: 30px;
+	position: absolute;
+	left:calc(50% - 20px); 
+	top: calc(50% - 10px);
+}

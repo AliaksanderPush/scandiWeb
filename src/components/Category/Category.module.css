@@ -3,6 +3,7 @@
   margin: auto;
 }
 
+
 .title {
   width: 100%;
   margin-top: 80px;
@@ -34,13 +35,18 @@
 }
 
 @media (max-width: 850px) {
-  .listCont {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  
+  .cards_container {
+    justify-content: center;
+   
+   }
+
 }
 
-@media (max-width: 550px) {
-  .listCont {
-    grid-template-columns: repeat(1, 1fr);
+@media (max-width: 600px) {
+ 
+  .cards_container {
+   justify-content: center;
+  
   }
 }

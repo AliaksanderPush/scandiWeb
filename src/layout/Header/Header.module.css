@@ -1,6 +1,8 @@
 * {
   box-sizing: border-box;
 }
+
+
 .outer_header {
   width: 100%;
   height: 80px;
@@ -8,18 +10,21 @@
   display: flex;
   justify-content: center;
   position: relative;
+  
 }
 .inner_header {
   width: 85%;
   height: 100%;
   display: flex;
   justify-content: space-between;
+  
 }
 .cat_selectors {
   height: 100%;
   width: 250px;
   display: flex;
   align-items: center;
+
 }
 
 .cat_selectors .cat_menu {
@@ -36,6 +41,7 @@
   width: calc(100% - 500px);
   display: flex;
   justify-content: center;
+  
 }
 .logo_box .logo {
   display: flex;
@@ -109,21 +115,27 @@
 }
 
 
-@media only screen and (max-width: 460px) {
-  .inner_header {
-    width: 100%;
-  }
+@media only screen and (max-width: 640px) {
+  
   .cart_menu {
     margin-right: 8px;
+    width: 140px;
   }
+
+  
 
   .cat_selectors {
-    margin-left: 8px;
-    width: 160px;
+     width: 140px;
   }
+  .cat_selectors li {
+    margin-top: 10px;
+ }
 
-  .cat_selectors .cat_menu li {
-    margin-right: 7px;
-    font-size: 14px;
+
+  .outer_header {
+    height: 120px;
   }
+  
+
+  
 }

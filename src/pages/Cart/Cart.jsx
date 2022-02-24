@@ -14,13 +14,13 @@ class Cart extends Component {
     console.log(prodAttr);
     return (
       <div className={styles.cart_container}>
-        <h2 className={styles.title}>Cart</h2>
+        <h2 className={styles.title}>Ssa</h2>
         {selectedAttr.length ? (
           selectedAttr.map((item) => {
             return (
               <Query key={item.id} query={cartDetails(item.id)}>
                 {({ loading, data, error }) => {
-                  if (loading) return <Spinner />;
+                  if (loading) return 'loading...';
                   if (error) return <ErrorBoundry />;
                   //console.log("CartDetails>>", data.product);
                   return (

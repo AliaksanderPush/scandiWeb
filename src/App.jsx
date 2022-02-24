@@ -15,9 +15,9 @@ class App extends Component {
       <>
         <Layout>
           <Switch>
-            <Route path="/:category/" exact component={Category} />
-            <Route path="/fan" component={Cart} />
-            <Route path="/category/:id" component={ProdDetails} />
+            <Route path="/cart/" exact component={Cart} />
+            <Route path="/category/:id"  component={ProdDetails} />
+            <Route path="/:category/"  component={Category} />
             <Route />
           </Switch>
         </Layout>

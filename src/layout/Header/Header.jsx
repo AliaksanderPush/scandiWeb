@@ -24,9 +24,7 @@ class Header extends Component {
 
   handleDropMenu = (e) => {
     const selectSingle = e.target.parentElement;
-    console.log("click", selectSingle);
-    console.log("title", e.target);
-    this.setState({ element: selectSingle, elemTitle: e.target });
+     this.setState({ element: selectSingle, elemTitle: e.target });
     if ("active" === selectSingle.getAttribute("data-state")) {
       selectSingle.setAttribute("data-state", "");
     } else {
@@ -96,7 +94,7 @@ class Header extends Component {
           </div>
         </div>
         {showMadalCart ? (
-          <CartModal closeModalCart={this.handleShowModal} />
+         <CartModal closeModalCart={this.handleShowModal} />
         ) : null}
       </div>
     );

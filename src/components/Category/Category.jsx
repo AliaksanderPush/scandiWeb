@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Query } from "react-apollo";
 import { getCategory } from "../../graphql/querys";
 import { Spinner } from "..";
@@ -23,10 +23,14 @@ class Category extends Component {
           <Query query={getCategory(category)}>
             {({ loading, data, error }) => {
               if (loading) return <Spinner />;
-              if (!!error) return <ErrorBoundry />;
-              return data?.category?.products.map((prod) => {
-                return <Product key={prod.id} info={prod} />;
-              });
+              if (error) return <ErrorBoundry />;
+                return <Fragment>
+                {
+                data?.category?.products.map((prod) => {
+                 return <Product key={prod.id} info={prod} />;
+                })
+                }
+                </Fragment>
             }}
           </Query>
         </div>

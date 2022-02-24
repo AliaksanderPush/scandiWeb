@@ -16,8 +16,8 @@ code {
     monospace;
 }
 
-.error {
-  color: var(--red);
+main {
+position: relative;
 }
 
 :root {

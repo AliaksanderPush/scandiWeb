@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "../../index.css";
+import styles from "./Error.module.css";
 
 export const Error = () => {
-  return <span className={styles.error}>Error</span>;
+  return <div className={styles.error}>Error!</div>;
 };

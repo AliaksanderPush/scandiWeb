@@ -36,16 +36,16 @@ class CartModal extends Component {
       <div className={styles.cart_modal_container}>
         <div className={styles.cart_modal_content}>
           <h1>
-            My Bag, <span>{selectedAttr.length} items</span>{" "}
+           My Bag, <span>{selectedAttr.length}items</span> 
           </h1>
 
           {selectedAttr.length ? (
             selectedAttr.map((item) => {
               return (
-                <React.Fragment>
+            
                   <Query key={item.id} query={cartDetails(item.id)}>
                     {({ loading, data, error }) => {
-                      if (loading) return <Spinner />;
+                      if (loading) return <Spinner/>;
                       if (error) return <ErrorBoundry />;
                       //console.log("CartDetails>>", data.product);
                       return (
@@ -64,7 +64,7 @@ class CartModal extends Component {
                       );
                     }}
                   </Query>
-                </React.Fragment>
+              
               );
             })
           ) : (
