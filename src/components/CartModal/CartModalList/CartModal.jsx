@@ -5,10 +5,11 @@ import ErrorBoundry from "../../ErrorBoundry";
 import { Spinner } from "../..";
 import { Query } from "react-apollo";
 import { cartDetails } from "../../../graphql/querys";
-import { Button } from "../..";
 import { incrementProd, decrementProd } from "../../../redux/actions";
-import { Link } from "react-router-dom";
-import styles from "./CartModal.module.css";
+import {CartModalButtons} from '../CartModalButtons/CartModalButtons';
+import  styles  from  "./CartModal.module.css";
+
+
 
 class CartModal extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class CartModal extends Component {
     const { prodAttr } = this.props;
     const selectedAttr = prodAttr.cart;
     const summa = this.getTotalSumm();
-
+    console.log('flag', this.props)
     return (
       <div className={styles.cart_modal_container}>
         <div className={styles.cart_modal_content}>
@@ -70,24 +71,10 @@ class CartModal extends Component {
           ) : (
             <div>Cart is empty</div>
           )}
-          <div className={styles.total}>
-            <p>Total</p>
-            <p>{summa}</p>
-          </div>
-          <div className={styles.modal_btn}>
-            <Link to={"/cart"}>
-              <Button
-                appearance={"ghost"}
-                size={"l"}
-                onClick={this.props.closeModalCart}
-              >
-                view bag
-              </Button>
-            </Link>
-            <Button appearance={"primary"} size={"l"}>
-              check out
-            </Button>
-          </div>
+         <CartModalButtons
+          summa={summa}
+          closeModalCart={this.props.closeModalCart}
+         />
         </div>
       </div>
     );

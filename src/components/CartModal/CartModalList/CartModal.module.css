@@ -29,13 +29,4 @@
   font-weight: 500;
 }
 
-.total {
-  display: flex;
-  justify-content: space-between;
-  margin: 52px 0px 32px;
-  font-weight: 500;
-}
-.modal_btn {
-  display: flex;
-  justify-content: space-between;
-}
+
