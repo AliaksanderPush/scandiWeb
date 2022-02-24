@@ -1,8 +1,12 @@
 .cart_modal_wrap {
   width: 100%;
-  height: 207px;
+  height: 214px;
   display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
+}
+.cart_modal_wrap .cart_wrap {
+  height: 100vh;
 }
 
 .modal_attributes {
@@ -12,14 +16,30 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.modal_attributes.cart_attributes {
+  width: 650px;
+  border: 1px solid black;
+}
+
 .modal_brand > p {
-  font-weight: 300;
   line-height: 26px;
   margin-bottom: 9px;
 }
+.cart_brand > p {
+  line-height: 27px;
+  margin-bottom: 16px;
+}
+
 .modal_price {
   font-weight: 500;
   margin-bottom: 27px;
+  font-family: "Raleway", sans-serif;
+}
+.cart_price {
+  font-weight: 700;
+  font-size: 24px;
+  font-family: "Raleway", sans-serif;
 }
 
 .modal_size {
@@ -36,6 +56,11 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.modal_name .cart_name {
+  width: 100%;
+}
+
 .modal_name p {
   margin-right: 10px;
   font-size: 12px;
@@ -47,7 +72,11 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.modal_counts .count {
+.modal_counts.cart_counts {
+  width: 45px;
+}
+
+.count {
   width: 24px;
   height: 24px;
   border: 1px solid var(--black);
@@ -59,6 +88,18 @@
 .modal_counts > div {
   text-align: center;
 }
+
+.count.cart_count {
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+}
+.count .cart_count div {
+  text-align: center;
+  font-weight: 500;
+  font-family: "Raleway", sans-serif;
+}
+
 .modal_image {
   width: 177px;
   height: 100%;
@@ -66,6 +107,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  border: 1px solid blue;
 }
 .modal_image img {
   height: 70%;

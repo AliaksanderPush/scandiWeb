@@ -1,0 +1,19 @@
+.p {
+  font-family: "Raleway", sans-serif;
+}
+
+.s {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.m {
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.l {
+  font-size: 30px;
+  font-weight: 600;
+}

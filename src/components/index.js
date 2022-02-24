@@ -5,3 +5,6 @@ export * from "./UI/icons/CartIconWhite";
 export * from "./Spiner/Spiner";
 export * from "./UI/Button/Button";
 export * from "./UI/Switch/Switch";
+export * from "./UI/Htag/Htag";
+export * from "./UI/Ptag/Ptag";
+export * from "./UI/Image/Image";

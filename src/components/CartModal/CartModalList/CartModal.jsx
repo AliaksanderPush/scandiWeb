@@ -6,10 +6,9 @@ import { Spinner } from "../..";
 import { Query } from "react-apollo";
 import { cartDetails } from "../../../graphql/querys";
 import { incrementProd, decrementProd } from "../../../redux/actions";
-import {CartModalButtons} from '../CartModalButtons/CartModalButtons';
-import  styles  from  "./CartModal.module.css";
-
-
+import { CartModalButtons } from "../CartModalButtons/CartModalButtons";
+import { Htag } from "../..";
+import styles from "./CartModal.module.css";
 
 class CartModal extends Component {
   constructor(props) {
@@ -29,52 +28,57 @@ class CartModal extends Component {
   };
 
   render() {
-    const { prodAttr } = this.props;
+    const { prodAttr, cart } = this.props;
     const selectedAttr = prodAttr.cart;
     const summa = this.getTotalSumm();
-    console.log('flag', this.props)
+    console.log("isCarmodal", this.props);
     return (
-      <div className={styles.cart_modal_container}>
-        <div className={styles.cart_modal_content}>
-          <h1>
-           My Bag, <span>{selectedAttr.length}items</span> 
-          </h1>
+      <div
+        className={cart ? styles.cart_container : styles.cart_modal_container}
+      >
+        <hr />
+        <div className={cart ? styles.cart_content : styles.cart_modal_content}>
+          {!cart ? (
+            <Htag tag={"h1"}>
+              My Bag, <span>{selectedAttr.length}items</span>
+            </Htag>
+          ) : null}
 
           {selectedAttr.length ? (
             selectedAttr.map((item) => {
               return (
-            
-                  <Query key={item.id} query={cartDetails(item.id)}>
-                    {({ loading, data, error }) => {
-                      if (loading) return <Spinner/>;
-                      if (error) return <ErrorBoundry />;
-                      //console.log("CartDetails>>", data.product);
-                      return (
-                        <CartModalItem
-                          name={data?.product?.name}
-                          brand={data?.product?.brand}
-                          gallery={data?.product?.gallery[0]}
-                          attributes={data?.product?.attributes}
-                          selectedAttr={item.attributes}
-                          cartCurrency={item.selCurr}
-                          count={item.count}
-                          handleIncrement={this.handleIncrement}
-                          handleDecrement={this.handleDecrement}
-                          id={item.id}
-                        />
-                      );
-                    }}
-                  </Query>
-              
+                <Query key={item.id} query={cartDetails(item.id)}>
+                  {({ loading, data, error }) => {
+                    if (loading) return <Spinner />;
+                    if (error) return <ErrorBoundry />;
+                    return (
+                      <CartModalItem
+                        cart={cart ? true : false}
+                        name={data?.product?.name}
+                        brand={data?.product?.brand}
+                        gallery={data?.product?.gallery}
+                        attributes={data?.product?.attributes}
+                        selectedAttr={item.attributes}
+                        cartCurrency={item.selCurr}
+                        count={item.count}
+                        handleIncrement={this.handleIncrement}
+                        handleDecrement={this.handleDecrement}
+                        id={item.id}
+                      />
+                    );
+                  }}
+                </Query>
               );
             })
           ) : (
             <div>Cart is empty</div>
           )}
-         <CartModalButtons
-          summa={summa}
-          closeModalCart={this.props.closeModalCart}
-         />
+          {!cart ? (
+            <CartModalButtons
+              summa={summa}
+              closeModalCart={this.props.closeModalCart}
+            />
+          ) : null}
         </div>
       </div>
     );

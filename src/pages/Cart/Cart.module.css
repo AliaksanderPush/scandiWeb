@@ -1,9 +1,13 @@
 .cart_container {
-  padding: 6rem 6.25rem 3.37rem 6.25rem;
+  width: 85%;
+  height: auto;
+  margin: auto;
+  padding-top: 80px;
+  border: 1px solid black;
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 40px;
   font-weight: 700;
   color: var(--secondary);
   margin-bottom: 2rem;
