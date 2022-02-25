@@ -57,7 +57,7 @@
   flex-direction: column;
   width: calc(100% - 6px);
   background-color: #ffffff;
-  box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+  box-shadow: 0px 8px 45px #9c9d9e30;
   transition: all 0.3s ease-out;
   opacity: 0;
   z-index: 8;

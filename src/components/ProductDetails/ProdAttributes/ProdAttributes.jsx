@@ -82,6 +82,7 @@ class ProdAttributes extends Component {
   render() {
     const { brand, name, attributes } = this.props;
     const { curr, symb } = this.state.selectedCurrensy;
+    const currency = curr.toFixed(2);
     const { inStock, showMessage } = this.state;
     return (
       <div className={styles.info_details}>
@@ -104,7 +105,7 @@ class ProdAttributes extends Component {
           <div className={styles.price}>
             <h3>Price:</h3>
             <h2>
-              {symb} {curr}
+              {symb} {currency}
             </h2>
             <Button
               disable={!inStock}

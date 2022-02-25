@@ -36,7 +36,7 @@ class CartModal extends Component {
       <div
         className={cart ? styles.cart_container : styles.cart_modal_container}
       >
-        <hr />
+        {cart ? <hr /> : null}
         <div className={cart ? styles.cart_content : styles.cart_modal_content}>
           {!cart ? (
             <Htag tag={"h1"}>
@@ -73,7 +73,7 @@ class CartModal extends Component {
           ) : (
             <div>Cart is empty</div>
           )}
-          
+
           {!cart ? (
             <CartModalButtons
               summa={summa}

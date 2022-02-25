@@ -2,6 +2,7 @@
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .xl {
@@ -47,9 +48,9 @@
   transition: all 0.3s;
 }
 @media only screen and (max-width: 800px) {
-  .xl  {
+  .xl {
     display: block;
     margin: 0 auto;
     margin-bottom: 10px;
-  } 
+  }
 }

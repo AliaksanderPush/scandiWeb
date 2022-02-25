@@ -17,7 +17,7 @@ code {
 }
 
 main {
-position: relative;
+  position: relative;
 }
 
 :root {
@@ -25,6 +25,6 @@ position: relative;
   --black: #1d1f22;
   --white: #fff;
   --darckGreen: #1bb343;
-  --gray: rgb(226, 222, 222);
+  --gray: rgb(150, 148, 148);
   --red: red;
 }

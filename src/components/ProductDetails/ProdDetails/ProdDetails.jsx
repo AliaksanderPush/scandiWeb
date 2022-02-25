@@ -3,7 +3,7 @@ import { Query } from "react-apollo";
 import { Spinner } from "../..";
 import ErrorBoundry from "../../ErrorBoundry";
 import { getProdDetails } from "../../../graphql/querys";
-import { Image } from "../..";
+import Image from "../../UI/Image";
 import ProdAttributes from "../ProdAttributes";
 import { withRouter } from "react-router-dom";
 import styles from "./ProdDetails.module.css";

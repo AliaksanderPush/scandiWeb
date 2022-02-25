@@ -4,13 +4,10 @@
   justify-content: start;
   flex-wrap: wrap;
   margin-top: 8px 0px 0px 30px;
-  
 }
 
 @media only screen and (max-width: 800px) {
   .sizes_details {
     width: 100%;
   }
-
-  
 }

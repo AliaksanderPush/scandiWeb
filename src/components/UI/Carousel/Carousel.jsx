@@ -1,34 +1,35 @@
 import React, { Component } from "react";
-import {
-  handleCarouselPrew,
-  handleCarouselNext,
-} from "../DataWork/dataChanger";
 
-handleCarouselPrew = (id, gal) => {
-  const element = document.getElementById(id.replace(/\s/g));
-  let pic = element.firstChild.src;
-  let indexOfCurrentPic = gal.indexOf(pic);
-  indexOfCurrentPic === 0
-    ? (element.firstChild.src = gal[gal.length - 1])
-    : (element.firstChild.src = gal[indexOfCurrentPic - 1]);
-};
-handleCarouselNext = (id, gal) => {
-  const element = document.getElementById(id.replace(/\s/g));
-  let pic = element.firstChild.src;
-  let indexOfCurrentPic = gal.indexOf(pic);
-  indexOfCurrentPic === gal.length - 1
-    ? (element.firstChild.src = gal[0])
-    : (element.firstChild.src = gal[indexOfCurrentPic + 1]);
-};
+export default class Carousel extends Component {
+  constructor(props) {
+    super();
+  }
 
-export default class CartImgCarousel extends Component {
+  handleCarouselPrew = (id, gal) => {
+    const element = document.getElementById(id.replace(/\s/g));
+    let pic = element.firstChild.src;
+    let indexOfCurrentPic = gal.indexOf(pic);
+    indexOfCurrentPic === 0
+      ? (element.firstChild.src = gal[gal.length - 1])
+      : (element.firstChild.src = gal[indexOfCurrentPic - 1]);
+  };
+  handleCarouselNext = (id, gal) => {
+    const element = document.getElementById(id.replace(/\s/g));
+    let pic = element.firstChild.src;
+    let indexOfCurrentPic = gal.indexOf(pic);
+    indexOfCurrentPic === gal.length - 1
+      ? (element.firstChild.src = gal[0])
+      : (element.firstChild.src = gal[indexOfCurrentPic + 1]);
+  };
+
   render() {
+    console.log("props>>", this.props.indicator, this.props.gallery);
     return (
       <div>
         <div
           id="prew"
           onClick={() =>
-            handleCarouselPrew(this.props.indicator, this.props.gallery)
+            this.handleCarouselPrew(this.props.indicator, this.props.gallery)
           }
         >
           <svg
@@ -42,17 +43,17 @@ export default class CartImgCarousel extends Component {
             <path
               d="M1 13L7 7L1 1"
               stroke="white"
-              stroke-width="2"
+              strokeWidth="2"
               fill="gray"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>
         <div
           id="next"
           onClick={() =>
-            handleCarouselNext(this.props.indicator, this.props.gallery)
+            this.handleCarouselNext(this.props.indicator, this.props.gallery)
           }
         >
           <svg
@@ -65,10 +66,10 @@ export default class CartImgCarousel extends Component {
             <path
               d="M1 13L7 7L1 1"
               stroke="white"
-              stroke-width="2"
+              strokeWidth="2"
               fill="gray"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>

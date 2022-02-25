@@ -9,20 +9,26 @@
   font-size: 16px;
   margin: 5px 12px 0px 0px;
   line-height: 45px;
+  background-color: var(--white);
 }
 .small {
   min-width: 24px;
   height: 24px;
   line-height: 24px;
-  margin: 4px 7px 0px 0px ;
+  margin: 4px 7px 0px 0px;
   font-size: 10px;
   text-align: center;
   padding: 0;
-
+  opacity: 0.5;
   background-color: var(--gray);
 }
 .selected {
   background-color: var(--white);
+  opacity: 1;
+}
+.large.selected {
+  background-color: var(--black);
+  color: var(--white);
 }
 
 .black {
