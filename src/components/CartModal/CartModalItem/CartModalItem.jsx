@@ -22,10 +22,11 @@ class CartModalItem extends Component {
     const { curr, symb } = cartCurrency;
     const price = curr.toFixed(2);
     return (
+      <>
       <div
         className={
           cart
-            ? `${styles.cart_modal_wrap} ${styles.cart_wrap}`
+            ? styles.cart_wrap
             : styles.cart_modal_wrap
         }
       >
@@ -80,6 +81,7 @@ class CartModalItem extends Component {
           </div>
         </div>
 
+      <div className={styles.wrapper_cart} > 
         <div
           className={
             cart
@@ -105,10 +107,13 @@ class CartModalItem extends Component {
             -
           </div>
         </div>
-        <div className={styles.modal_image}>
+        <div className={cart ? styles.cart_image : styles.modal_image}>
           <Image src={gallery[0]} />
         </div>
-      </div>
+        </div>
+      </div> 
+         <hr />
+         </>  
     );
   }
 }

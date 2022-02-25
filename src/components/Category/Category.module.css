@@ -24,7 +24,7 @@
   margin-bottom: 30px;
 }
 
-.productLink {
+.cards_container a {
   text-decoration: none;
 }
 
@@ -38,7 +38,7 @@
   
   .cards_container {
     justify-content: center;
-   
+     
    }
 
 }

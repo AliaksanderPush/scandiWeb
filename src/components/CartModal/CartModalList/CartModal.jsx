@@ -73,6 +73,7 @@ class CartModal extends Component {
           ) : (
             <div>Cart is empty</div>
           )}
+          
           {!cart ? (
             <CartModalButtons
               summa={summa}

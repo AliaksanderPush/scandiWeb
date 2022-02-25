@@ -18,7 +18,9 @@
 
 .cart_container {
   width: 100%;
-  border: 1px solid red;
+  
+  
+  
 }
 
 .cart_modal_content {
@@ -32,6 +34,3 @@
   font-weight: 500;
 }
 
-.cart_content {
-  border: 1px solid blue;
-}

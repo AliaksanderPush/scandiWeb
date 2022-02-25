@@ -59,7 +59,7 @@ class Header extends Component {
                     return (
                       <li key={cat.name}>
                         <NavLink
-                          className={styles.nav_linck}
+                         
                           to={`/${cat.name}`}
                         >
                           {cat.name.toUpperCase()}
@@ -109,3 +109,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+// className={styles.nav_linck}

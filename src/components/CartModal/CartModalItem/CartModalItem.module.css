@@ -3,14 +3,19 @@
   height: 214px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
-}
-.cart_modal_wrap .cart_wrap {
-  height: 100vh;
+  margin: 5px 0px  20px 0px;
+  }
+.cart_wrap {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0px 15px 0px;
+
 }
 
 .modal_attributes {
-  width: 145px;
+  width: 225px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -19,7 +24,7 @@
 
 .modal_attributes.cart_attributes {
   width: 650px;
-  border: 1px solid black;
+  
 }
 
 .modal_brand > p {
@@ -74,6 +79,7 @@
 }
 .modal_counts.cart_counts {
   width: 45px;
+  margin: 0 5px;
 }
 
 .count {
@@ -101,15 +107,77 @@
 }
 
 .modal_image {
-  width: 177px;
+  width: 147px;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  border: 1px solid blue;
+  
 }
 .modal_image img {
-  height: 70%;
+  height: 60%;
   width: auto;
+}
+
+.cart_image {
+  width: 365px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.cart_image img {
+  height: 300px;
+  width: auto;
+}
+
+
+.wrapper_cart {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  
+}
+
+@media only screen and (max-width: 800px) {
+  .cart_wrap {
+    width: 350px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px 0px 10px 0px;
+    
+  }
+  .cart_image img {
+    height: 90%;
+    width: auto;
+  }
+
+
+  .cart_image {
+    width: auto;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+    
+  }
+
+  .modal_attributes.cart_attributes {
+    width: 350px;
+    margin-bottom: 10px;
+  }
+
+  .wrapper_cart {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    
+  }
+
 }

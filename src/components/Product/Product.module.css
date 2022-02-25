@@ -9,6 +9,7 @@
 .container_product:hover {
   box-shadow: 0px 4px 35px 0px #a8acb030;
   cursor: pointer;
+  font-family: "Raleway", sans-serif;
 }
 
 .out_stock_overlay {
@@ -31,6 +32,7 @@
   position: relative;
   width: 100%;
   height: 86%;
+  text-decoration: none;
 }
 
 .image_container img {
@@ -50,8 +52,8 @@
 }
 
 .price {
-  font-weight: bold;
-  font-size: 1rem;
+  font-weight:500;
+  font-size: 18px;
   color: var(--black);
   margin-top: 3px;
   margin-bottom: 0;
@@ -74,4 +76,16 @@
 
 .container_product:hover > * > .cart_icon {
   visibility: unset;
+}
+@media only screen and (max-width: 640px) {
+  .image_container {
+   
+    width: 100%;
+    height: 86%;
+  }
+  
+  .image_container img {
+    width: auto;
+    height: 80%;
+  }
 }
