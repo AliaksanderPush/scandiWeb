@@ -124,7 +124,7 @@ class CartModalItem extends Component {
             </div>
             <div className={cart ? styles.cart_image : styles.modal_image}>
               <Image
-                src={cart ? gallery[this.state.index] : gallery[0]}
+                src={gallery[this.state.index]}
                 cart={cart ? true : false}
                 prevHandler={cart ? this.prevHandler : null}
                 nextHandler={cart ? this.nextHandler : null}

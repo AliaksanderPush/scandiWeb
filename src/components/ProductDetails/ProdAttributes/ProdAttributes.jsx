@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { selectCurrensy } from "../../../helpers/helpers";
 import { addToCart } from "../../../redux/actions";
 import ProdAttrList from "../ProdAttrList";
-import { Button } from "../../";
+import { Button, Ptag, Htag } from "../..";
 import styles from "./ProdAttributes.module.css";
 
 class ProdAttributes extends Component {
@@ -87,8 +87,8 @@ class ProdAttributes extends Component {
     return (
       <div className={styles.info_details}>
         <div className={styles.wrap_info_details}>
-          <h1>{brand}</h1>
-          <h2>{name}</h2>
+          <Htag tag={"h1_attr"}>{brand}</Htag>
+          <Htag tag={"h2_attr"}>{name}</Htag>
           {attributes.length
             ? attributes.map((attr) => {
                 return (
@@ -103,10 +103,10 @@ class ProdAttributes extends Component {
             : null}
 
           <div className={styles.price}>
-            <h3>Price:</h3>
-            <h2>
+            <Htag tag={"h3"}>Price:</Htag>
+            <Htag tag={"h2"}>
               {symb} {currency}
-            </h2>
+            </Htag>
             <Button
               disable={!inStock}
               size={"xl"}
@@ -116,9 +116,9 @@ class ProdAttributes extends Component {
               {!inStock ? "out of stock" : "add to cart"}
             </Button>
             {showMessage ? (
-              <p className={styles.show_message}>
+              <Ptag className={styles.show_message}>
                 Please,choose all attributes
-              </p>
+              </Ptag>
             ) : null}
           </div>
           <div className={styles.text_details}>

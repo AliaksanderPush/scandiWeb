@@ -8,3 +8,4 @@ export * from "./UI/Switch/Switch";
 export * from "./UI/Htag/Htag";
 export * from "./UI/Ptag/Ptag";
 export * from "./UI/Image/Image";
+export * from "./UI/PopapDarckMode/PopupDarckMode";

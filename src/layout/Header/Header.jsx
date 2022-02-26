@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { currencyLoaded } from "../../redux/actions";
 import CartModal from "../../components/CartModal/CartModalList";
 import { DropCurrMenu } from "../DropCurrMenu/DropCurrMenu";
+import { PopupDarckMode } from "../../components";
 import styles from "./Header.module.css";
 
 class Header extends Component {
@@ -24,7 +25,7 @@ class Header extends Component {
 
   handleDropMenu = (e) => {
     const selectSingle = e.target.parentElement;
-     this.setState({ element: selectSingle, elemTitle: e.target });
+    this.setState({ element: selectSingle, elemTitle: e.target });
     if ("active" === selectSingle.getAttribute("data-state")) {
       selectSingle.setAttribute("data-state", "");
     } else {
@@ -58,10 +59,7 @@ class Header extends Component {
                   return data?.categories.map((cat) => {
                     return (
                       <li key={cat.name}>
-                        <NavLink
-                         
-                          to={`/${cat.name}`}
-                        >
+                        <NavLink to={`/${cat.name}`}>
                           {cat.name.toUpperCase()}
                         </NavLink>
                       </li>
@@ -94,7 +92,9 @@ class Header extends Component {
           </div>
         </div>
         {showMadalCart ? (
-         <CartModal closeModalCart={this.handleShowModal} />
+          <PopupDarckMode closeModalCart={this.handleShowModal} overlay>
+            <CartModal closeModalCart={this.handleShowModal} />
+          </PopupDarckMode>
         ) : null}
       </div>
     );

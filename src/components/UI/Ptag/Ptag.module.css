@@ -1,5 +1,6 @@
 .p {
   font-family: "Raleway", sans-serif;
+  font-size: 18px;
 }
 
 .s {
@@ -7,10 +8,22 @@
   font-size: 16px;
   line-height: 26px;
 }
+.sx {
+  font-weight: 500;
+  font-size: 16px;
+}
 
 .m {
   font-weight: 400;
   font-size: 30px;
+}
+
+.mx {
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--black);
+  margin-top: 3px;
+  margin-bottom: 0;
 }
 
 .l {

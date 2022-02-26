@@ -3,6 +3,7 @@ import { CartIconWhite } from "..";
 import { connect } from "react-redux";
 import { selectCurrensy } from "../../helpers/helpers";
 import { Link } from "react-router-dom";
+import { Htag, Ptag } from "..";
 import styles from "./Product.module.css";
 
 class Product extends Component {
@@ -42,15 +43,15 @@ class Product extends Component {
                 <CartIconWhite />
               </div>
             ) : (
-              <p className={styles.out_stock_text}>OUT OF STOCK</p>
+              <Ptag className={styles.out_stock_text}>OUT OF STOCK</Ptag>
             )}
           </div>
-          <h3 className={styles.brand_and_name}>
+          <Htag tag={"h3_brand"}>
             {brand} {name}
-          </h3>
-          <p className={styles.price}>
+          </Htag>
+          <Ptag size={"mx"} className={styles.price}>
             {curr.symb} {curr.curr}
-          </p>
+          </Ptag>
         </div>
       </Link>
     );

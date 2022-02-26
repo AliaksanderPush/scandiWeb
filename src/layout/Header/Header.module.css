@@ -2,7 +2,6 @@
   box-sizing: border-box;
 }
 
-
 .outer_header {
   width: 100%;
   height: 80px;
@@ -10,21 +9,18 @@
   display: flex;
   justify-content: center;
   position: relative;
-  
 }
 .inner_header {
   width: 85%;
   height: 100%;
   display: flex;
   justify-content: space-between;
-  
 }
 .cat_selectors {
   height: 100%;
   width: 250px;
   display: flex;
   align-items: center;
-
 }
 
 .cat_selectors .cat_menu {
@@ -41,7 +37,6 @@
   width: calc(100% - 500px);
   display: flex;
   justify-content: center;
-  
 }
 .logo_box .logo {
   display: flex;
@@ -52,7 +47,7 @@
   display: block;
 }
 
-.cat_menu li  {
+.cat_menu li {
   list-style-type: none;
   display: inline-block;
   color: var(--green);
@@ -72,7 +67,6 @@
   font-weight: 600;
   border-bottom: 2px solid var(--green);
   padding: 0 0 32px 0;
-  
 }
 .currency_menu h3:hover {
   cursor: pointer;
@@ -113,9 +107,7 @@
   cursor: pointer;
 }
 
-
 @media only screen and (max-width: 640px) {
-  
   .cart_menu {
     margin-right: 8px;
     width: 140px;
@@ -128,17 +120,17 @@
   }
 
   .cat_selectors {
-     width: 140px;
+    width: 140px;
   }
   .cat_selectors li {
     margin-top: 10px;
- }
-
+  }
 
   .outer_header {
     height: 120px;
   }
-  
 
-  
+  .cat_menu li a[aria-current="page"] {
+    border-bottom: none;
+  }
 }

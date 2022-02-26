@@ -40,25 +40,6 @@
   height: 100%;
 }
 
-.brand_and_name {
-  font-weight: 300;
-  font-size: 18px;
-  color: var(--black);
-  margin-top: 1rem;
-  margin-bottom: 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.price {
-  font-weight: 500;
-  font-size: 18px;
-  color: var(--black);
-  margin-top: 3px;
-  margin-bottom: 0;
-}
-
 .cart_icon {
   position: absolute;
   right: 8%;

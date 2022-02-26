@@ -4,6 +4,7 @@ import { getCategory } from "../../graphql/querys";
 import { Spinner } from "..";
 import ErrorBoundry from "../ErrorBoundry/ErrorBoundry";
 import Product from "../Product";
+import { Htag } from "..";
 import styles from "./Category.module.css";
 
 class Category extends Component {
@@ -17,20 +18,20 @@ class Category extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.title}>
-          <h1>{newCategory}</h1>
+          <Htag tag={"h1_title"}>{newCategory}</Htag>
         </div>
         <div className={styles.cards_container}>
           <Query query={getCategory(category)}>
             {({ loading, data, error }) => {
               if (loading) return <Spinner />;
               if (error) return <ErrorBoundry />;
-                return <Fragment>
-                {
-                data?.category?.products.map((prod) => {
-                 return <Product key={prod.id} info={prod} />;
-                })
-                }
+              return (
+                <Fragment>
+                  {data?.category?.products.map((prod) => {
+                    return <Product key={prod.id} info={prod} />;
+                  })}
                 </Fragment>
+              );
             }}
           </Query>
         </div>

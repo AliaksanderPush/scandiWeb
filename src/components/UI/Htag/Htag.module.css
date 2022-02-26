@@ -1,3 +1,11 @@
+.h1,
+.h1_cart,
+.h1_title,
+.h1_attr,
+.h2_attr,
+.h2 {
+  font-family: "Raleway", sans-serif;
+}
 .h1 {
   font-size: 16px;
   font-weight: 700;
@@ -5,4 +13,37 @@
 .h1_cart {
   font-size: 30px;
   font-weight: 700;
+}
+.h1_title {
+  font-size: 42px;
+  font-weight: 400;
+  color: var(--black);
+}
+
+.h1_attr {
+  font-weight: 600;
+  font-size: 24px;
+}
+.h2 {
+  font-size: 24px;
+}
+
+.h2_attr {
+  font-weight: 400;
+  font-size: 30px;
+}
+.h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.h3_brand_and_name {
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--black);
+  margin-top: 1rem;
+  margin-bottom: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
