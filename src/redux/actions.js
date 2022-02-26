@@ -28,14 +28,12 @@ export const addToCart = (value) => {
 };
 
 export const incrementProd = (ProdId) => {
-  console.log("actions>>>", ProdId);
   return {
     type: INCREMENT_PRODUCT,
     id: ProdId,
   };
 };
 export const decrementProd = (ProdId) => {
-  console.log("actions>>>", ProdId);
   return {
     type: DECREMENT_PRODUCT,
     id: ProdId,

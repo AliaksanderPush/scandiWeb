@@ -15,7 +15,7 @@
 .images_details {
   width: 65%;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: space-between;
 }
 .images_items {
@@ -24,6 +24,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: start;
   flex-wrap: wrap;
 }
 

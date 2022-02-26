@@ -31,7 +31,7 @@ class CartModal extends Component {
     const { prodAttr, cart } = this.props;
     const selectedAttr = prodAttr.cart;
     const summa = this.getTotalSumm();
-    console.log("isCarmodal", this.props);
+
     return (
       <div
         className={cart ? styles.cart_container : styles.cart_modal_container}

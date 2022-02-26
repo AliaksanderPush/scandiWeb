@@ -6,7 +6,6 @@ const initialState = {
 };
 
 export const cartReducer = (state = initialState, { attr, id, type }) => {
-  console.log("catDeduser>>", attr);
   switch (type) {
     case ADD_TO_CARD:
       const ind = state.cart.findIndex((item) => item.id === attr.id);

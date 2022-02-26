@@ -104,7 +104,7 @@ class ProdAttributes extends Component {
 
           <div className={styles.price}>
             <Htag tag={"h3"}>Price:</Htag>
-            <Htag tag={"h2"}>
+            <Htag tag={"h2_attr"}>
               {symb} {currency}
             </Htag>
             <Button

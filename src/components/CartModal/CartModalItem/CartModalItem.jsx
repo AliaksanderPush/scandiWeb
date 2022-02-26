@@ -40,8 +40,7 @@ class CartModalItem extends Component {
     } = this.props;
     const { curr, symb } = cartCurrency;
     const price = curr.toFixed(2);
-    console.log(this.state.index);
-    console.log("gallery", this.props.gallery.length);
+
     return (
       <>
         <div className={cart ? styles.cart_wrap : styles.cart_modal_wrap}>

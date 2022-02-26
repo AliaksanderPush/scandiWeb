@@ -5,9 +5,6 @@ import styles from "./Cart.module.css";
 
 class Cart extends Component {
   render() {
-    const { prodAttr } = this.props;
-
-    console.log(prodAttr);
     return (
       <>
         <div className={styles.cart_container}>
