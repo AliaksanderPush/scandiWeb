@@ -21,6 +21,7 @@ export const CartModalSwitch = ({ value, cart, name, type, selectedAttr }) => {
     if (type === "swatch")
       return {
         backgroundColor: value,
+        opacity:1
       };
   }
 
