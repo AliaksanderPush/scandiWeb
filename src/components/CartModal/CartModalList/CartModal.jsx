@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import ErrorBoundry from "../../ErrorBoundry";
 import { Spinner } from "../..";
 import { Query } from "react-apollo";
-import { cartDetails } from "../../../graphql/querys";
+import { getProdDetails } from "../../../graphql/querys";
 import { incrementProd, decrementProd } from "../../../redux/actions";
 import { CartModalButtons } from "../CartModalButtons/CartModalButtons";
 import { Htag } from "../..";
@@ -47,7 +47,7 @@ class CartModal extends PureComponent {
           {selectedAttr.length ? (
             selectedAttr.map((item) => {
               return (
-                <Query key={item.id} query={cartDetails(item.id)}>
+                <Query key={item.id} query={getProdDetails(item.id)}>
                   {({ loading, data, error }) => {
                     if (loading) return <Spinner />;
                     if (error) return <ErrorBoundry />;
@@ -58,6 +58,7 @@ class CartModal extends PureComponent {
                         brand={data?.product?.brand}
                         gallery={data?.product?.gallery}
                         attributes={data?.product?.attributes}
+                        prices={data?.product?.prices}
                         selectedAttr={item.attributes}
                         cartCurrency={item.selCurr}
                         count={item.count}

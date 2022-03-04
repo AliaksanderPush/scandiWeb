@@ -2,16 +2,17 @@ import React, { PureComponent } from "react";
 import Image from "../../UI/Image";
 import { CartModalSwitch } from "../CartModalSwitchs/CartModalSwitch";
 import { Ptag } from "../..";
-
+import {selectCurrensy} from '../../../helpers/helpers';
+import { connect } from "react-redux";
 import styles from "./CartModalItem.module.css";
 
 class CartModalItem extends PureComponent {
-  constructor(props) {
-    super();
-    this.state = {
+  
+    state = {
       index: 0,
+      selectedCurrensy: selectCurrensy(this.props.prices, this.props.currency),
     };
-  }
+  
 
   nextHandler = () => {
      if (this.state.index < this.props.gallery.length - 1)
@@ -23,6 +24,15 @@ class CartModalItem extends PureComponent {
       this.setState((state) => ({ index: state.index - 1 }));
   };
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.currency !== this.props.currency) {
+      const value = selectCurrensy(this.props.prices, this.props.currency);
+      this.setState({
+        selectedCurrensy: value,
+      });
+    }
+  }
+
   render() {
     const {
       brand,
@@ -31,15 +41,16 @@ class CartModalItem extends PureComponent {
       name,
       attributes,
       selectedAttr,
-      cartCurrency,
       id,
       handleIncrement,
       handleDecrement,
       cart,
     } = this.props;
-    const { curr, symb } = cartCurrency;
+    const { curr, symb } = this.state.selectedCurrensy;
     const price = curr.toFixed(2);
-
+    console.log('propsOModal>>>',this.props )
+    console.log('cur>>>',this.props.currency )
+    console.log('propsModal>>>',this.props.prices )
     return (
       <>
         <div className={cart ? styles.cart_wrap : styles.cart_modal_wrap}>
@@ -135,4 +146,8 @@ class CartModalItem extends PureComponent {
     );
   }
 }
-export default CartModalItem;
+const mapStateToProps = (state) => ({
+  currency: state.priceReducer,
+});
+
+export default connect(mapStateToProps, null)(CartModalItem);

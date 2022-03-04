@@ -84,6 +84,8 @@ class ProdAttributes extends PureComponent {
     const currency = curr.toFixed(2);
     const { inStock, showMessage } = this.state;
     const cleanHTML = DOMPurify.sanitize(description);
+    console.log('curProd>>>',this.props.prices, this.props.currency )
+    console.log('props>>',this.props )
     return (
       <div className={styles.info_details}>
         <div className={styles.wrap_info_details}>

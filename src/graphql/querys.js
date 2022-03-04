@@ -80,6 +80,11 @@ export const cartDetails = (id) => {
         brand
         name
         gallery
+        prices {
+          currency{
+          label
+          symbol
+        }
         attributes {
           name
           type
