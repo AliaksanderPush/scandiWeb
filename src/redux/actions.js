@@ -4,12 +4,16 @@ import {
   ADD_TO_CARD,
   INCREMENT_PRODUCT,
   DECREMENT_PRODUCT,
+  CHANGE_CURRENCY,
 } from "./types";
 
-export const productLoaded = (newProduct) => {
+export const productLoaded = (id, price) => {
+  console.log("acsion>>", id, price);
   return {
     type: PRODUCTS_LOAD,
-    payload: newProduct,
+    id: id,
+    price: price,
+    //payload: newProduct,
   };
 };
 
@@ -37,5 +41,14 @@ export const decrementProd = (ProdId) => {
   return {
     type: DECREMENT_PRODUCT,
     id: ProdId,
+  };
+};
+
+export const changeCurrensy = (id, coast) => {
+  console.log("achions>>", id, coast);
+  return {
+    type: CHANGE_CURRENCY,
+    currId: id,
+    newCurrensy: coast,
   };
 };

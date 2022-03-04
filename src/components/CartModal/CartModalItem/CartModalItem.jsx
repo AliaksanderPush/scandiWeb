@@ -2,20 +2,19 @@ import React, { PureComponent } from "react";
 import Image from "../../UI/Image";
 import { CartModalSwitch } from "../CartModalSwitchs/CartModalSwitch";
 import { Ptag } from "../..";
-import {selectCurrensy} from '../../../helpers/helpers';
+import { selectCurrensy } from "../../../helpers/helpers";
 import { connect } from "react-redux";
+import { productLoaded } from "../../../redux/actions";
 import styles from "./CartModalItem.module.css";
 
 class CartModalItem extends PureComponent {
-  
-    state = {
-      index: 0,
-      selectedCurrensy: selectCurrensy(this.props.prices, this.props.currency),
-    };
-  
+  state = {
+    index: 0,
+    selectedCurrensy: selectCurrensy(this.props.prices, this.props.currency),
+  };
 
   nextHandler = () => {
-     if (this.state.index < this.props.gallery.length - 1)
+    if (this.state.index < this.props.gallery.length - 1)
       this.setState((state) => ({ index: state.index + 1 }));
   };
 
@@ -33,6 +32,14 @@ class CartModalItem extends PureComponent {
     }
   }
 
+  currensyUpdate = () => {
+    const { curr } = this.state.selectedCurrensy;
+    const count = this.props.count;
+    const res = curr * count;
+    this.props.currUpdate(this.props.id, res);
+    return res.toFixed(2);
+  };
+
   render() {
     const {
       brand,
@@ -46,11 +53,9 @@ class CartModalItem extends PureComponent {
       handleDecrement,
       cart,
     } = this.props;
-    const { curr, symb } = this.state.selectedCurrensy;
-    const price = curr.toFixed(2);
-    console.log('propsOModal>>>',this.props )
-    console.log('cur>>>',this.props.currency )
-    console.log('propsModal>>>',this.props.prices )
+    const { symb } = this.state.selectedCurrensy;
+    const price = this.currensyUpdate();
+    console.log("cartItem", this.currensyUpdate());
     return (
       <>
         <div className={cart ? styles.cart_wrap : styles.cart_modal_wrap}>
@@ -146,8 +151,12 @@ class CartModalItem extends PureComponent {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => ({
+  currUpdate: (id, coast) => dispatch(productLoaded(id, coast)),
+});
+
 const mapStateToProps = (state) => ({
   currency: state.priceReducer,
 });
 
-export default connect(mapStateToProps, null)(CartModalItem);
+export default connect(mapStateToProps, mapDispatchToProps)(CartModalItem);

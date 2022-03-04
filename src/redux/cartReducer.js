@@ -12,7 +12,6 @@ export const cartReducer = (state = initialState, { attr, id, type }) => {
       if (ind !== -1) {
         const array = [...state.cart];
         array[ind].count = array[ind].count + 1;
-        array[ind].selCurr.curr += array[ind].price;
         return {
           ...state,
           cart: array,
@@ -29,7 +28,6 @@ export const cartReducer = (state = initialState, { attr, id, type }) => {
       const index = cart.findIndex((item) => item.id === id);
       const newCart = [...cart];
       newCart[index].count = newCart[index].count + 1;
-      newCart[index].selCurr.curr += newCart[index].price;
       return {
         ...state,
         cart: newCart,
@@ -40,7 +38,6 @@ export const cartReducer = (state = initialState, { attr, id, type }) => {
       if (cart[index].count > 1) {
         const newCart = [...cart];
         newCart[index].count = newCart[index].count - 1;
-        newCart[index].selCurr.curr -= newCart[index].price;
         return {
           ...state,
           cart: newCart,
@@ -58,20 +55,3 @@ export const cartReducer = (state = initialState, { attr, id, type }) => {
       return state;
   }
 };
-/*
-const ind = state.cart.findIndex((item) => item.id === attr.id);
-      if (ind) {
-        const array = [...state.cart];
-        array[ind].count = array[ind].count + 1;
-        array[ind].selCurr.curr += array[ind].price;
-         return {
-            ...state,
-            cart: [...state.cart, array],
-          }; 
-        } else {
-          return {
-            ...state,
-            cart: [...state.cart, attr],
-          }; 
-        }
-        */

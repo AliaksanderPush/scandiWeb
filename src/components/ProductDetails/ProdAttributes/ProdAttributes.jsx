@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
-import ReactHtmlParser from 'react-html-parser';
-import DOMPurify from 'dompurify';
+import ReactHtmlParser from "react-html-parser";
+import DOMPurify from "dompurify";
 import { connect } from "react-redux";
 import { selectCurrensy } from "../../../helpers/helpers";
 import { addToCart } from "../../../redux/actions";
@@ -71,7 +71,6 @@ class ProdAttributes extends PureComponent {
     }, 2000);
   };
 
- 
   componentDidMount() {
     this.setState({ id: this.props.id });
     this.setState({ checkAllSelected: this.props.attributes.length });
@@ -79,13 +78,12 @@ class ProdAttributes extends PureComponent {
   }
 
   render() {
-    const { brand, name, attributes, description  } = this.props;
+    const { brand, name, attributes, description } = this.props;
     const { curr, symb } = this.state.selectedCurrensy;
     const currency = curr.toFixed(2);
     const { inStock, showMessage } = this.state;
     const cleanHTML = DOMPurify.sanitize(description);
-    console.log('curProd>>>',this.props.prices, this.props.currency )
-    console.log('props>>',this.props )
+
     return (
       <div className={styles.info_details}>
         <div className={styles.wrap_info_details}>
@@ -124,7 +122,7 @@ class ProdAttributes extends PureComponent {
             ) : null}
           </div>
           <div className={styles.text_details}>
-           {ReactHtmlParser(cleanHTML)}
+            {ReactHtmlParser(cleanHTML)}
           </div>
         </div>
       </div>

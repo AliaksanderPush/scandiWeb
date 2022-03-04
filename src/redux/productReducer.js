@@ -5,11 +5,12 @@ const initialState = {
 };
 
 export const productReducer = (state = initialState, action) => {
+  console.log("prodReduser>>", action);
   switch (action.type) {
     case PRODUCTS_LOAD:
       return {
         ...state,
-        products: action.payload,
+        products: [...state.products, action],
       };
     default:
       return state;
