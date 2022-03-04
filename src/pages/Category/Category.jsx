@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { Query } from "react-apollo";
 import { getCategory } from "../../graphql/querys";
-import { Spinner } from "..";
-import ErrorBoundry from "../ErrorBoundry/ErrorBoundry";
-import Product from "../Product";
-import { Htag } from "..";
+import { Spinner } from "../../components";
+import ErrorBoundry from "../../components/ErrorBoundry/ErrorBoundry";
+import Product from "../../components/Product";
+import { Htag } from "../../components";
 import styles from "./Category.module.css";
 
 class Category extends Component {

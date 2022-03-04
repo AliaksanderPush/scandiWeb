@@ -84,7 +84,7 @@
   cursor: pointer;
   overflow: hidden;
 }
-.select__label + input + .__select__label {
+.select__label + input + .select__label {
   border-top: none;
 }
 .select__label:hover {

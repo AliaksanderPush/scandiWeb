@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Image from "../../UI/Image";
 import { CartModalSwitch } from "../CartModalSwitchs/CartModalSwitch";
 import { Ptag } from "../..";
 
 import styles from "./CartModalItem.module.css";
 
-class CartModalItem extends Component {
+class CartModalItem extends PureComponent {
   constructor(props) {
     super();
     this.state = {
@@ -14,8 +14,7 @@ class CartModalItem extends Component {
   }
 
   nextHandler = () => {
-    console.log("clicl");
-    if (this.state.index < this.props.gallery.length - 1)
+     if (this.state.index < this.props.gallery.length - 1)
       this.setState((state) => ({ index: state.index + 1 }));
   };
 

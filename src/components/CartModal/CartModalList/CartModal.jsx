@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import CartModalItem from "../CartModalItem";
 import { connect } from "react-redux";
 import ErrorBoundry from "../../ErrorBoundry";
@@ -10,7 +10,7 @@ import { CartModalButtons } from "../CartModalButtons/CartModalButtons";
 import { Htag } from "../..";
 import styles from "./CartModal.module.css";
 
-class CartModal extends Component {
+class CartModal extends PureComponent {
   constructor(props) {
     super();
   }

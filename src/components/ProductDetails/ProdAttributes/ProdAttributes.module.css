@@ -2,7 +2,7 @@
   width: 35%;
   height: 100%;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .wrap_info_details {
   font-family: "Raleway", sans-serif;

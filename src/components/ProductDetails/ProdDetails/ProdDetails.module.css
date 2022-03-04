@@ -20,11 +20,11 @@
 }
 .images_items {
   max-width: 35%;
-  height: calc(100vh + 100px);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
@@ -38,6 +38,7 @@
 .image_item > img {
   width: 100%;
   height: auto;
+ 
 }
 
 .image_item:hover {
@@ -80,12 +81,14 @@
   .images_details {
     flex-direction: column-reverse;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
   }
   .image_item {
-    margin: 30px 0px;
+    margin: 30px 5px;
   }
+ 
 }
+
 
 @media only screen and (max-width: 800px) {
   .container_details {

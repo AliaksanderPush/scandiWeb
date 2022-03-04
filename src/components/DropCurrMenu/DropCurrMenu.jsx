@@ -1,8 +1,8 @@
-import React from "react";
+import React, {Fragment} from "react";
 import { Query } from "react-apollo";
 import { GET_CURRENCIES } from "../../graphql/querys";
-import { Spinner } from "../../components";
-import ErrorBoundry from "../../components/ErrorBoundry";
+import { Spinner } from "..";
+import ErrorBoundry from "../ErrorBoundry";
 import styles from "./DropCurrMenu.module.css";
 
 export const DropCurrMenu = ({ handleDropMenu, handleLabelValue }) => {
@@ -25,7 +25,7 @@ export const DropCurrMenu = ({ handleDropMenu, handleLabelValue }) => {
             if (error) return <ErrorBoundry/>;
             return data?.currencies.map((curr, index) => {
               return (
-                <React.Fragment key={curr.label}>
+                <Fragment key={curr.label}>
                   <input
                     id={"singleSelect" + (index + 1)}
                     className={styles.select__input}
@@ -40,7 +40,7 @@ export const DropCurrMenu = ({ handleDropMenu, handleLabelValue }) => {
                   >
                     {curr.symbol} {curr.label}
                   </label>
-                </React.Fragment>
+                </Fragment>
               );
             });
           }}

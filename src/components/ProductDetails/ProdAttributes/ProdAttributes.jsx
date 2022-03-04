@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+import ReactHtmlParser from 'react-html-parser';
+import DOMPurify from 'dompurify';
 import { connect } from "react-redux";
 import { selectCurrensy } from "../../../helpers/helpers";
 import { addToCart } from "../../../redux/actions";
@@ -6,7 +8,7 @@ import ProdAttrList from "../ProdAttrList";
 import { Button, Ptag, Htag } from "../..";
 import styles from "./ProdAttributes.module.css";
 
-class ProdAttributes extends Component {
+class ProdAttributes extends PureComponent {
   state = {
     attributes: [],
     id: "",
@@ -69,10 +71,7 @@ class ProdAttributes extends Component {
     }, 2000);
   };
 
-  renderMyProps() {
-    return { __html: this.props.description };
-  }
-
+ 
   componentDidMount() {
     this.setState({ id: this.props.id });
     this.setState({ checkAllSelected: this.props.attributes.length });
@@ -80,10 +79,11 @@ class ProdAttributes extends Component {
   }
 
   render() {
-    const { brand, name, attributes } = this.props;
+    const { brand, name, attributes, description  } = this.props;
     const { curr, symb } = this.state.selectedCurrensy;
     const currency = curr.toFixed(2);
     const { inStock, showMessage } = this.state;
+    const cleanHTML = DOMPurify.sanitize(description);
     return (
       <div className={styles.info_details}>
         <div className={styles.wrap_info_details}>
@@ -122,7 +122,7 @@ class ProdAttributes extends Component {
             ) : null}
           </div>
           <div className={styles.text_details}>
-            <div dangerouslySetInnerHTML={this.renderMyProps()} />
+           {ReactHtmlParser(cleanHTML)}
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Logo, CartIcon } from "../../components";
 import { NavLink } from "react-router-dom";
 import { Query } from "react-apollo";
@@ -8,11 +8,11 @@ import ErrorBoundry from "../../components/ErrorBoundry";
 import { connect } from "react-redux";
 import { currencyLoaded } from "../../redux/actions";
 import CartModal from "../../components/CartModal/CartModalList";
-import { DropCurrMenu } from "../DropCurrMenu/DropCurrMenu";
+import { DropCurrMenu } from "../../components/DropCurrMenu/DropCurrMenu";
 import { PopupDarckMode } from "../../components";
 import styles from "./Header.module.css";
 
-class Header extends Component {
+class Header extends PureComponent {
   state = {
     element: null,
     elemTitle: null,
@@ -110,4 +110,4 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
-// className={styles.nav_linck}
+

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Layout from "./layout/Layout";
 import { Switch, Route } from "react-router-dom";
 import ProdDetails from "./components/ProductDetails/ProdDetails";
-import Category from "./components/Category";
+import Category from "./pages/Category/Category";
 import Cart from "./pages/Cart";
 import { withRouter } from "react-router-dom";
 

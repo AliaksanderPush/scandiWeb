@@ -5,7 +5,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { store } from "./redux/store";
 import ErrorBoundry from "./components/ErrorBoundry/ErrorBoundry";
 import client from "./apollo";
-import { Spinner } from "./components";
 import { ApolloProvider } from "react-apollo";
 import App from "./App";
 import "./index.css";
