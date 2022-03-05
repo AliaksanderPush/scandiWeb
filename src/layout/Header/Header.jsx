@@ -6,7 +6,7 @@ import { MENU_CATEGORIES } from "../../graphql/querys";
 import { Spinner } from "../../components";
 import ErrorBoundry from "../../components/ErrorBoundry";
 import { connect } from "react-redux";
-import { currencyLoaded } from "../../redux/actions";
+import { currencyLoaded, changeCurrensy } from "../../redux/actions";
 import CartModal from "../../components/CartModal/CartModalList";
 import { DropCurrMenu } from "../../components/DropCurrMenu/DropCurrMenu";
 import { PopupDarckMode } from "../../components";
@@ -38,8 +38,9 @@ class Header extends PureComponent {
     let elem = this.state.elemTitle;
     elem.textContent = selectSingle_label.textContent;
     this.state.element.setAttribute("data-state", "");
-    const label = elem.textContent.split(" ")[1];
+    const [symbol,label] = elem.textContent.split(" ");
     this.props.currencyList(label);
+    this.props.changeCurrensy(symbol);
     this.setState({ element: null });
   };
 
@@ -103,6 +104,7 @@ class Header extends PureComponent {
 
 const mapDispatchToProps = (dispatch) => ({
   currencyList: (value) => dispatch(currencyLoaded(value)),
+  changeCurrensy:(val) => dispatch(changeCurrensy(val))
 });
 const mapStateToProps = (state) => ({
   prodAttr: state.cartReducer,

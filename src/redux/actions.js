@@ -1,21 +1,11 @@
 import {
-  PRODUCTS_LOAD,
-  CURRENCY_LOAD,
+   CURRENCY_LOAD,
   ADD_TO_CARD,
   INCREMENT_PRODUCT,
   DECREMENT_PRODUCT,
   CHANGE_CURRENCY,
 } from "./types";
 
-export const productLoaded = (id, price) => {
-  console.log("acsion>>", id, price);
-  return {
-    type: PRODUCTS_LOAD,
-    id: id,
-    price: price,
-    //payload: newProduct,
-  };
-};
 
 export const currencyLoaded = (val) => {
   return {
@@ -44,11 +34,11 @@ export const decrementProd = (ProdId) => {
   };
 };
 
-export const changeCurrensy = (id, coast) => {
-  console.log("achions>>", id, coast);
+export const changeCurrensy = (symb) => {
   return {
     type: CHANGE_CURRENCY,
-    currId: id,
-    newCurrensy: coast,
+    symbol: symb,
+    
   };
+  
 };

@@ -13,12 +13,14 @@ import styles from "./CartModal.module.css";
 class CartModal extends PureComponent {
   constructor(props) {
     super();
+   
   }
   getTotalSumm = () => {
     const arr = this.props.prodAttr.cart;
     let summ = arr.reduce((acc, it) => acc + it.selCurr.curr, 0);
     return summ.toFixed(2);
   };
+
   handleIncrement = (id) => {
     this.props.incProd(id);
   };
@@ -26,12 +28,13 @@ class CartModal extends PureComponent {
   handleDecrement = (id) => {
     this.props.decProd(id);
   };
-
+ 
+  
   render() {
     const { prodAttr, cart } = this.props;
     const selectedAttr = prodAttr.cart;
     const summa = this.getTotalSumm();
-
+    console.log(selectedAttr )
     return (
       <div
         className={cart ? styles.cart_container : styles.cart_modal_container}
@@ -61,6 +64,7 @@ class CartModal extends PureComponent {
                         prices={data?.product?.prices}
                         selectedAttr={item.attributes}
                         cartCurrency={item.selCurr}
+                        selCurr = {item.selCurr}
                         count={item.count}
                         handleIncrement={this.handleIncrement}
                         handleDecrement={this.handleDecrement}
@@ -89,7 +93,7 @@ class CartModal extends PureComponent {
 
 const mapStateToProps = (state) => ({
   prodAttr: state.cartReducer,
-});
+  });
 const mapDispatchToProps = (dispatch) => ({
   incProd: (prodId) => dispatch(incrementProd(prodId)),
   decProd: (prodId) => dispatch(decrementProd(prodId)),

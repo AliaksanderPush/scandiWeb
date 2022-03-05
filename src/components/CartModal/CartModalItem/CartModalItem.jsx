@@ -2,15 +2,14 @@ import React, { PureComponent } from "react";
 import Image from "../../UI/Image";
 import { CartModalSwitch } from "../CartModalSwitchs/CartModalSwitch";
 import { Ptag } from "../..";
-import { selectCurrensy } from "../../../helpers/helpers";
 import { connect } from "react-redux";
-import { productLoaded } from "../../../redux/actions";
+import { changeCurrensy } from "../../../redux/actions";
 import styles from "./CartModalItem.module.css";
 
 class CartModalItem extends PureComponent {
   state = {
     index: 0,
-    selectedCurrensy: selectCurrensy(this.props.prices, this.props.currency),
+     
   };
 
   nextHandler = () => {
@@ -22,23 +21,7 @@ class CartModalItem extends PureComponent {
     if (this.state.index > 0)
       this.setState((state) => ({ index: state.index - 1 }));
   };
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.currency !== this.props.currency) {
-      const value = selectCurrensy(this.props.prices, this.props.currency);
-      this.setState({
-        selectedCurrensy: value,
-      });
-    }
-  }
-
-  currensyUpdate = () => {
-    const { curr } = this.state.selectedCurrensy;
-    const count = this.props.count;
-    const res = curr * count;
-    this.props.currUpdate(this.props.id, res);
-    return res.toFixed(2);
-  };
+  
 
   render() {
     const {
@@ -51,11 +34,12 @@ class CartModalItem extends PureComponent {
       id,
       handleIncrement,
       handleDecrement,
+      selCurr,
       cart,
     } = this.props;
-    const { symb } = this.state.selectedCurrensy;
-    const price = this.currensyUpdate();
-    console.log("cartItem", this.currensyUpdate());
+    const { symb } = selCurr;
+    const price = selCurr.curr.toFixed(2);
+    
     return (
       <>
         <div className={cart ? styles.cart_wrap : styles.cart_modal_wrap}>
@@ -72,7 +56,7 @@ class CartModalItem extends PureComponent {
                 <Ptag size={cart ? "m" : "s"}>{name}</Ptag>
               </div>
               <div className={cart ? styles.cart_price : styles.modal_price}>
-                {symb}
+                { symb }
                 {price}
               </div>
             </div>
@@ -152,11 +136,13 @@ class CartModalItem extends PureComponent {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  currUpdate: (id, coast) => dispatch(productLoaded(id, coast)),
+  currUpdate: (id, coast) => dispatch(changeCurrensy(id, coast)),
 });
 
 const mapStateToProps = (state) => ({
   currency: state.priceReducer,
+
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartModalItem);

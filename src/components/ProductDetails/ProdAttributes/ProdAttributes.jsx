@@ -3,7 +3,7 @@ import ReactHtmlParser from "react-html-parser";
 import DOMPurify from "dompurify";
 import { connect } from "react-redux";
 import { selectCurrensy } from "../../../helpers/helpers";
-import { addToCart } from "../../../redux/actions";
+import { addToCart} from "../../../redux/actions";
 import ProdAttrList from "../ProdAttrList";
 import { Button, Ptag, Htag } from "../..";
 import styles from "./ProdAttributes.module.css";
@@ -43,7 +43,7 @@ class ProdAttributes extends PureComponent {
   componentDidUpdate(prevProps) {
     if (prevProps.currency !== this.props.currency) {
       const value = selectCurrensy(this.props.prices, this.props.currency);
-      this.setState({
+        this.setState({
         selectedCurrensy: value,
       });
     }
@@ -55,6 +55,7 @@ class ProdAttributes extends PureComponent {
         id: this.state.id,
         attributes: this.state.attributes,
         selCurr: this.state.selectedCurrensy,
+        prices:this.props.prices,
         count: 1,
         price: this.state.selectedCurrensy.curr,
       };
@@ -83,7 +84,7 @@ class ProdAttributes extends PureComponent {
     const currency = curr.toFixed(2);
     const { inStock, showMessage } = this.state;
     const cleanHTML = DOMPurify.sanitize(description);
-
+    
     return (
       <div className={styles.info_details}>
         <div className={styles.wrap_info_details}>
@@ -135,6 +136,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   addAttrToCart: (value) => dispatch(addToCart(value)),
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProdAttributes);

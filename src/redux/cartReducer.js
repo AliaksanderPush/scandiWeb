@@ -1,17 +1,20 @@
-import { ADD_TO_CARD, INCREMENT_PRODUCT, DECREMENT_PRODUCT } from "./types";
+import { ADD_TO_CARD, INCREMENT_PRODUCT, DECREMENT_PRODUCT,CHANGE_CURRENCY } from "./types";
+import {isCurrensy} from '../helpers/helpers';
+
 
 const initialState = {
   cart: [],
   id: "",
 };
 
-export const cartReducer = (state = initialState, { attr, id, type }) => {
-  switch (type) {
+export const cartReducer = (state = initialState, { attr, id, type, symbol }) => {
+   switch (type) {
     case ADD_TO_CARD:
       const ind = state.cart.findIndex((item) => item.id === attr.id);
       if (ind !== -1) {
         const array = [...state.cart];
         array[ind].count = array[ind].count + 1;
+        array[ind].selCurr.curr += array[ind].price;
         return {
           ...state,
           cart: array,
@@ -28,6 +31,7 @@ export const cartReducer = (state = initialState, { attr, id, type }) => {
       const index = cart.findIndex((item) => item.id === id);
       const newCart = [...cart];
       newCart[index].count = newCart[index].count + 1;
+      newCart[index].selCurr.curr += newCart[index].price;
       return {
         ...state,
         cart: newCart,
@@ -38,6 +42,7 @@ export const cartReducer = (state = initialState, { attr, id, type }) => {
       if (cart[index].count > 1) {
         const newCart = [...cart];
         newCart[index].count = newCart[index].count - 1;
+        newCart[index].selCurr.curr -= newCart[index].price;
         return {
           ...state,
           cart: newCart,
@@ -49,6 +54,19 @@ export const cartReducer = (state = initialState, { attr, id, type }) => {
           cart: newCart,
         };
       }
+    }
+
+    case CHANGE_CURRENCY: {
+      const { cart } = state;
+      let arr = [...cart];
+      const updateCart = arr.map(item => {
+       return isCurrensy(item, symbol)
+       
+      })
+      return {
+        ...state,
+        cart: updateCart,
+      };
     }
 
     default:
