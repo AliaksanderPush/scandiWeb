@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Query } from "react-apollo";
 import { Spinner } from "../..";
 import ErrorBoundry from "../../ErrorBoundry";
@@ -8,7 +8,7 @@ import ProdAttributes from "../ProdAttributes";
 import { withRouter } from "react-router-dom";
 import styles from "./ProdDetails.module.css";
 
-class ProdDetails extends Component {
+class ProdDetails extends PureComponent {
   state = {
     mainImage: "",
   };
