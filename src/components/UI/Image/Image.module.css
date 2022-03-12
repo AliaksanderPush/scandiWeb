@@ -4,10 +4,11 @@
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 10;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
 }
 .cart_arrow {
   font-size: 24px;

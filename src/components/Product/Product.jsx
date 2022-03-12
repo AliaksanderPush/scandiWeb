@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { CartIconWhite } from "..";
 import { connect } from "react-redux";
 import { selectCurrensy } from "../../helpers/helpers";
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Htag, Ptag } from "..";
 import styles from "./Product.module.css";
 
-class Product extends Component {
+class Product extends PureComponent {
   state = {
     curr: selectCurrensy(this.props.info.prices, this.props.currency),
   };

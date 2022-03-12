@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Htag } from "../..";
 import ProdAttrItem from "../ProdAttrItem";
 import styles from "./ProdAttrList.module.css";
 
-class ProdAttrList extends Component {
+class ProdAttrList extends PureComponent {
   state = {
     selectedOtherBox: false,
     selectedSwatchBox: false,

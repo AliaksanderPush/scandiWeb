@@ -32,7 +32,11 @@ class CartModal extends PureComponent {
     const { prodAttr, cart } = this.props;
     const selectedAttr = prodAttr.cart;
     const summa = this.getTotalSumm();
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> bbf1cdb7006bd7a18f2d3091d08fb484551ee886
     return (
       <div
         className={cart ? styles.cart_container : styles.cart_modal_container}

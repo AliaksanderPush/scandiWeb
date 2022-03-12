@@ -79,6 +79,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
 }
 .modal_counts.cart_counts {
   width: 45px;
@@ -128,10 +129,12 @@
   display: flex;
   justify-content: center;
   position: relative;
+  overflow: hidden;
 }
 .cart_image img {
   height: 100%;
   width: auto;
+
 }
 
 @media only screen and (max-width: 800px) {
@@ -146,6 +149,7 @@
   .cart_image img {
     height: 90%;
     width: auto;
+  
   }
 
   .cart_image {
