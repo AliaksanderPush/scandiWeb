@@ -59,7 +59,6 @@ export function deepCopy(obj) {
 }
 
 export function compareAttr(attrState, attrOuteside) {
-  //if (!attrOuteside.length) return false;
   const result = attrState.every((item, index) => {
     return (
       item.value === attrOuteside[index].value &&
