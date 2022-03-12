@@ -13,7 +13,6 @@ import styles from "./CartModal.module.css";
 class CartModal extends PureComponent {
   constructor(props) {
     super();
-   
   }
   getTotalSumm = () => {
     const arr = this.props.prodAttr.cart;
@@ -28,13 +27,12 @@ class CartModal extends PureComponent {
   handleDecrement = (id) => {
     this.props.decProd(id);
   };
- 
-  
+
   render() {
     const { prodAttr, cart } = this.props;
     const selectedAttr = prodAttr.cart;
     const summa = this.getTotalSumm();
-    console.log(selectedAttr )
+
     return (
       <div
         className={cart ? styles.cart_container : styles.cart_modal_container}
@@ -50,7 +48,7 @@ class CartModal extends PureComponent {
           {selectedAttr.length ? (
             selectedAttr.map((item) => {
               return (
-                <Query key={item.id} query={getProdDetails(item.id)}>
+                <Query key={item.prodId} query={getProdDetails(item.id)}>
                   {({ loading, data, error }) => {
                     if (loading) return <Spinner />;
                     if (error) return <ErrorBoundry />;
@@ -64,11 +62,12 @@ class CartModal extends PureComponent {
                         prices={data?.product?.prices}
                         selectedAttr={item.attributes}
                         cartCurrency={item.selCurr}
-                        selCurr = {item.selCurr}
+                        selCurr={item.selCurr}
                         count={item.count}
                         handleIncrement={this.handleIncrement}
                         handleDecrement={this.handleDecrement}
                         id={item.id}
+                        prodId={item.prodId}
                       />
                     );
                   }}
@@ -93,7 +92,7 @@ class CartModal extends PureComponent {
 
 const mapStateToProps = (state) => ({
   prodAttr: state.cartReducer,
-  });
+});
 const mapDispatchToProps = (dispatch) => ({
   incProd: (prodId) => dispatch(incrementProd(prodId)),
   decProd: (prodId) => dispatch(decrementProd(prodId)),

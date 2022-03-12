@@ -9,7 +9,6 @@ import styles from "./CartModalItem.module.css";
 class CartModalItem extends PureComponent {
   state = {
     index: 0,
-     
   };
 
   nextHandler = () => {
@@ -21,7 +20,6 @@ class CartModalItem extends PureComponent {
     if (this.state.index > 0)
       this.setState((state) => ({ index: state.index - 1 }));
   };
-  
 
   render() {
     const {
@@ -31,15 +29,15 @@ class CartModalItem extends PureComponent {
       name,
       attributes,
       selectedAttr,
-      id,
       handleIncrement,
       handleDecrement,
       selCurr,
       cart,
+      prodId,
     } = this.props;
     const { symb } = selCurr;
     const price = selCurr.curr.toFixed(2);
-    
+
     return (
       <>
         <div className={cart ? styles.cart_wrap : styles.cart_modal_wrap}>
@@ -56,7 +54,7 @@ class CartModalItem extends PureComponent {
                 <Ptag size={cart ? "m" : "s"}>{name}</Ptag>
               </div>
               <div className={cart ? styles.cart_price : styles.modal_price}>
-                { symb }
+                {symb}
                 {price}
               </div>
             </div>
@@ -106,7 +104,7 @@ class CartModalItem extends PureComponent {
                 className={
                   cart ? `${styles.count} ${styles.cart_count}` : styles.count
                 }
-                onClick={() => handleIncrement(id)}
+                onClick={() => handleIncrement(prodId)}
               >
                 +
               </div>
@@ -115,7 +113,7 @@ class CartModalItem extends PureComponent {
                 className={
                   cart ? `${styles.count} ${styles.cart_count}` : styles.count
                 }
-                onClick={() => handleDecrement(id)}
+                onClick={() => handleDecrement(prodId)}
               >
                 -
               </div>
@@ -141,8 +139,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   currency: state.priceReducer,
-
-  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartModalItem);
