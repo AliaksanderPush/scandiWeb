@@ -20,7 +20,7 @@
 }
 .images_items {
   max-width: 35%;
-  height: calc(100vh + 50px);
+  height: calc(100vh + 100px);
   display: flex;
   flex-direction: column;
   align-items: center;
